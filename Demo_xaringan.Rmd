@@ -295,6 +295,8 @@ cat(c("```{r, echo=FALSE, , out.width = '30%'}",
     sep='\n')
 ```
 
+#### HOLA MUNDO
+
 ]
 ]
 
