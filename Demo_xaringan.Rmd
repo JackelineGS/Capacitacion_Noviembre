@@ -1,0 +1,315 @@
+---
+title: "Visualización de datos con R"
+author: "Jorge Huanca, Jackeline García y Elías Aburto"
+institute: "Avances en Medición Psicológica"
+date: "13/12/2021"
+output: 
+  xaringan::moon_reader:
+    css: [xaringan-themer.css, custom.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:11
+encoding: "UTF-8"
+---
+
+class: inverse, center, middle
+# .font150[Cómo construir gráficos con ggplot2]
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, warning=FALSE, include=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color       = "#43418A",
+  padding          = "16px 50px 12px 50px",
+  code_font_google = google_font("Fira Mono")
+)
+```
+
+```{r xaringanExtra, echo=FALSE}
+#devtools::install_github("gadenbuie/xaringanExtra")
+library(xaringanExtra)
+xaringanExtra::use_xaringan_extra(c("tile_view", "tachyons", "panelset"))
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_logo(
+  image_url = "img/logo.png",
+  link_url = "https://www.linktr.ee/innov_lab",
+  width = 100,
+  height = 100
+)
+
+xaringanExtra::use_clipboard(
+  button_text = "Copiar",
+  success_text = "Copiado",
+  error_text = "Presiona Ctrl+C para copiar"
+)
+
+xaringanExtra::use_fit_screen()
+
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,          #<<
+  mute_unhighlighted_code = FALSE  #<<
+)
+```
+
+---
+class: inverse
+
+background-image:url(https://pbs.twimg.com/media/DsdIzJ3VsAAbjMW?format=jpg&name=small)
+background-size: cover     
+
+---
+#Capas básicas
+
+.pull-left[
+Un gráfico esta compuesto **mínimamente** por tres capas: 
+- Datos
+- Coordenadas
+- Geometría
+]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/ggplot2_capas_básicas.png", dpi = 500)
+```
+]
+
+---
+# Paso 0. Cargar paquete 
+
+.font105[.line-space1-5[
+`Tidyverse` es un ecosistema de paquetes, entre los cuales se encuentra `ggplot2`
+]]
+
+--
+
+```{r}
+library(tidyverse)                
+```
+
+---
+# Paso 1. Base de datos
+.font105[.line-space1-5[
+El primer argumento refiere a la data, en este caso trabajaremos con `iris`, la cual viene por defecto en R
+]]
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data = iris) 
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE}
+ggplot(data = iris)
+```
+]
+
+---
+# Paso 2. Coordenadas 
+.font105[.line-space1-5[
+El segundo argumento refiere a las coordenadas, para ello colocamos `aes`, señalando eje horizontal (x) y vertical (y)
+]]
+
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data = iris,
+       aes(x = Petal.Length,   #<<
+           y = Sepal.Length))  #<<
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE, fig.retina = 3}
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length))  
+```
+]
+
+---
+# Paso 3. Geometrías
+.font105[.line-space1-5[
+El tercer argumento refiere a las geometrías, para ello agregamos una capa **(con el símbolo +) ** y colocamos `geom`
+]]
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length)) +
+       geom_point()             #<<
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE, fig.retina = 3}
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length)) +
+       geom_point()
+```
+]
+
+---
+class: inverse, center, middle
+# .font100[Una vez se cuenta con las 3 capas básicas, se puede agregar otras para personalizar más el gráfico]
+
+---
+class: inverse
+
+background-image:url(https://pbs.twimg.com/media/EQ-uBWcX0AIc_bs.png)
+background-size: cover     
+
+---
+# Paso 4. Color (Parte de Estéticas)
+.font105[.line-space1-5[
+Con `aes`, además de las coordenadas, se puede colorear el gráfico. En este caso, coloreamos según **especies**
+]]
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length,
+           colour = Species)) +  #<<
+       geom_point()
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE, fig.retina = 3}
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length,
+           colour = Species)) +
+       geom_point()
+```
+]
+
+---
+# Paso 5. Temas
+.font105[.line-space1-5[
+El cuarto argumento refiere a los temas o formatos de la gráfica, para ello agregamos una capa  y colocamos `theme`
+]]
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length,
+           colour = Species)) +
+       geom_point() +
+       theme_classic()         #<<
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE}
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length,
+           colour = Species)) +
+       geom_point() +
+       theme_classic()
+```
+]
+
+---
+# Paso 6. Etiquetas
+.font105[.line-space1-5[
+El quinto argumento refiere a las etiquetas, para ello agregamos una capa y colocamos `labs`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
+]]
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length,
+           colour = Species)) +
+       geom_point() +
+       theme_classic() +
+       labs(                                        #<<
+       title = "Distribución de las especies",      #<<
+       subtitle = "Gráfica propia"                  #<<
+       caption  = "Avances en Medición Psicólogica" #<<
+       )                                            #<<
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE}
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length,
+           colour = Species)) +
+       geom_point() +
+       theme_classic() +
+       labs(                                    
+       title = "Distribución de las especies",  
+       subtitle = "Gráfica propia",      
+       caption  = "Avances en Medición Psicólogica"
+       )                                      
+```
+]
+
+---
+# Cuerpo: Ejemplo de diferentes secciones dentro de una diapositiva
+.font105[Prueba de integración del lenguaje **javascript**]
+
+.panelset[
+.panel[.panel-name[Sección 1]
+
+#### 1. Título 1
+
+```
+<img src="https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png" width="300px"/>
+```
+
+]
+
+.panel[.panel-name[Sección 1]
+
+#### 2. Título 2
+
+```{r, echo=FALSE, comment=""}
+cat(c("```{r, echo=FALSE, , out.width = '30%'}",
+      "knitr::include_graphics('https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png', 
+      dpi = 600) ",
+      "```"), 
+    sep='\n')
+```
+
+]
+]
+
+---
+
+class: middle
+
+<br>
+<center>
+<h1>
+<span style="color:black">¡Gracias por su atención!</span>
+<h1>
+</center>
+<br>
+
+.line-space1-5[
+Estas diapositivas fueron creadas mediante el paquete [xaringan](https://github.com/yihui/xaringan) y [xaringanthemer](https://github.com/gadenbuie/xaringanthemer/). Adicionalmente, la presentación de [Brian Peña](https://github.com/brianmsm), sobre [Rmarkdown Nivel Básico](https://github.com/brianmsm/rmakdown-basico), fue tomada como guía-base para esta elaboración.
+]
