@@ -6,7 +6,7 @@ institute: "Avances en Medición Psicológica"
 date: "13/12/2021"
 output: 
   xaringan::moon_reader:
-    css: [xaringan-themer.css, custom.css]
+    css: [xaringan-themer.css, xaringan-extra.css]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -28,11 +28,13 @@ options(htmltools.dir.version = FALSE)
 
 ```{r xaringan-themer, warning=FALSE, include=FALSE}
 library(xaringanthemer)
+
 style_mono_accent(
   base_color       = "#E94B4F",
   padding          = "16px 50px 12px 50px",
   code_font_google = google_font("Fira Mono")
 )
+
 ```
 
 ```{r xaringanExtra, echo=FALSE}
@@ -68,21 +70,6 @@ xaringanExtra::use_extra_styles(
 )
 
 ```
-
----
-layout: false
-class: full-screen hide-count
-
-<div class="grid-3-2">
-<div class="extension-tile tileview"><div>Tile View</div></div>
-<div class="extension-tile panelset-tile animated flipInX"><div>Panelset</div></div>
-</div>
-
----
-class: inverse
-
-background-image:url(https://pbs.twimg.com/media/DsdIzJ3VsAAbjMW?format=jpg&name=small)
-background-size: cover     
 
 ---
 #Capas básicas
