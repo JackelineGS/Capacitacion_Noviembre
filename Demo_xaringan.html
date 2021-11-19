@@ -10,7 +10,7 @@
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x21844745bea4b73b1c4d53046b2057d","expires":14}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x5a95cfc964d4d8ebc1c2c03d2ccd654","expires":14}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -85,6 +85,69 @@ top:1em;right:1em;
   document.addEventListener('DOMContentLoaded', addLogo)
 })()</script>
 </div>
+
+---
+
+# Visualización de datos con R
+
+.panelset[
+.panel[.panel-name[Herramientas]
+
+.pull-left[
+#### a) Interfaz gráfica: 
+- Power BI
+- Flourish
+- Tableau
+]
+
+.pull-right[
+#### b) Programación:
+- R
+- Python
+]
+
+
+]
+
+.panel[.panel-name[Ventajas de R]
+
+Las principales ventajas de usar R para la visualización de datos son: 
+
+.pull-left[
+- **Reproducibilidad** 
+
+- **Transparencia**
+
+- **Personalización**
+
+]
+]
+
+.panel[.panel-name[Ejemplos]
+
+[BBC](https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535) es una de las diferentes organizaciones que viene empleando R para la elaboración de sus visualizaciones. Para ello incluso ha creado un paquete denominado [bbplot](https://github.com/bbc/bbplot?fbclid=IwAR33xLEqbnMtBtNcBxWIz_2BserkV53TAyp44828yTxf_HzZmUU0QeWTgW8)
+
+&lt;div&gt;
+&lt;p style = 'text-align:center;'&gt;
+&lt;img src="https://raw.githubusercontent.com/bbc/bbplot/master/chart_examples/bbplot_example_plots.png" width="720px"&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+
+.panel[.panel-name[Paquetes]
+
+Se utilizará el paquete `ggplot2` y una serie de extensiones como:
+
+- gganimate
+- ggplotly
+- ggridges
+- patwchork
+
+]
+
+]
 
 ---
 #Capas básicas
@@ -214,7 +277,7 @@ class: inverse, center, middle
 countdown(minutes = 10, seconds = 10, play_sound = TRUE)
 ```
 
-<div class="countdown" id="timer_61920c02" style="right:0;bottom:0;" data-audio="true" data-warnwhen="0">
+<div class="countdown" id="timer_619735dd" style="right:0;bottom:0;" data-audio="true" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">10</span></code>
 </div>
 
@@ -299,6 +362,7 @@ ggplot(data = iris,
 
 ---
 # Cuerpo: Ejemplo de diferentes secciones dentro de una diapositiva
+
 .font105[Prueba de integración del lenguaje **javascript**]
 
 .panelset[
@@ -327,7 +391,9 @@ knitr::include_graphics('https://rubenfcasal.github.io/bookdown_intro/images/rma
 ]
 ]
 
+
 ---
+
 
 class: middle
 

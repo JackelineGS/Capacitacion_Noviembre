@@ -72,6 +72,69 @@ xaringanExtra::use_extra_styles(
 ```
 
 ---
+
+# Visualización de datos con R
+
+.panelset[
+.panel[.panel-name[Herramientas]
+
+.pull-left[
+#### a) Interfaz gráfica: 
+- Power BI
+- Flourish
+- Tableau
+]
+
+.pull-right[
+#### b) Programación:
+- R
+- Python
+]
+
+
+]
+
+.panel[.panel-name[Ventajas de R]
+
+Las principales ventajas de usar R para la visualización de datos son: 
+
+.pull-left[
+- **Reproducibilidad** 
+
+- **Transparencia**
+
+- **Personalización**
+
+]
+]
+
+.panel[.panel-name[Ejemplos]
+
+[BBC](https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535) es una de las diferentes organizaciones que viene empleando R para la elaboración de sus visualizaciones. Para ello incluso ha creado un paquete denominado [bbplot](https://github.com/bbc/bbplot?fbclid=IwAR33xLEqbnMtBtNcBxWIz_2BserkV53TAyp44828yTxf_HzZmUU0QeWTgW8)
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://raw.githubusercontent.com/bbc/bbplot/master/chart_examples/bbplot_example_plots.png" width="720px">
+</p>
+</div>
+
+]
+
+
+.panel[.panel-name[Paquetes]
+
+Se utilizará el paquete `ggplot2` y una serie de extensiones como:
+
+- gganimate
+- ggplotly
+- ggridges
+- patwchork
+
+]
+
+]
+
+---
 #Capas básicas
 
 .pull-left[
@@ -287,6 +350,7 @@ ggplot(data = iris,
 
 ---
 # Cuerpo: Ejemplo de diferentes secciones dentro de una diapositiva
+
 .font105[Prueba de integración del lenguaje **javascript**]
 
 .panelset[
@@ -315,7 +379,9 @@ cat(c("```{r, echo=FALSE, , out.width = '30%'}",
 ]
 ]
 
+
 ---
+
 
 class: middle
 
