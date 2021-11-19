@@ -80,17 +80,25 @@ xaringanExtra::use_extra_styles(
 
 .pull-left[
 #### a) Interfaz gráfica: 
-- Power BI
-- Flourish
-- Tableau
+- [Power BI](https://powerbi.microsoft.com/es-es/)
+
+- [Flourish](https://flourish.studio/)
+
+- [Tableau](https://www.tableau.com/)
+
+<img src="https://xd.adobe.com/ideas/wp-content/uploads/2020/10/what-is-graphical_user_interface.png" width="400px">
+
 ]
 
 .pull-right[
 #### b) Programación:
-- R
-- Python
-]
+- [R](https://www.r-project.org/)
 
+- [Python](https://www.python.org/)
+
+<img src="https://www.revistaenergia.com/wp-content/uploads/2020/12/source-4280758-1.jpg" width="400px">
+
+]
 
 ]
 
@@ -104,13 +112,27 @@ Las principales ventajas de usar R para la visualización de datos son:
 - **Transparencia**
 
 - **Personalización**
-
 ]
+
+.pull-right[
+
+####Iniciativas colaborativas:
+[#30díasdegráficos con R](https://github.com/cienciadedatos/datos-de-miercoles/blob/master/30-dias-de-graficos-2020.md)
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://opengraph.githubassets.com/29a716519a06b53dd7a3b1ebfa6bd801962ad55d18f3c8d86fdcd4a883b9f7a3/jorgesat/30diasdegraficos" width="600px">
+</p>
+</div>
+]
+
+
+
 ]
 
 .panel[.panel-name[Ejemplos]
 
-[BBC](https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535) es una de las diferentes organizaciones que viene empleando R para la elaboración de sus visualizaciones. Para ello incluso ha creado un paquete denominado [bbplot](https://github.com/bbc/bbplot?fbclid=IwAR33xLEqbnMtBtNcBxWIz_2BserkV53TAyp44828yTxf_HzZmUU0QeWTgW8)
+[BBC](https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535) es una de las diferentes organizaciones que viene empleando R para la elaboración de sus gráficos. Para ello incluso ha creado un paquete denominado [bbplot](https://github.com/bbc/bbplot?fbclid=IwAR33xLEqbnMtBtNcBxWIz_2BserkV53TAyp44828yTxf_HzZmUU0QeWTgW8)
 
 <div>
 <p style = 'text-align:center;'>
