@@ -276,11 +276,13 @@ ggplot(data = iris,
 
 
 ---
+class: inverse, center, middle
+# .font100[GRÁFICO DE BARRAS]
 
-#Gráfico de barras
+---
 
 .font105[.line-space1-5[
-El gráfico de barras es una forma de resumir un conjunto de datos por **categorías** por ejemplo por fechas, sexo, países y regiones.
+Los gráficos de barras son una forma de resumir un conjunto de datos por **categorías** por ejemplo por fechas, sexo, países y regiones.
 ]]
 
 .pull-left[
@@ -296,6 +298,8 @@ knitr::include_graphics("imagenes/segundo_ejemplo.png", dpi = 500)
 ]
 
 ---
+
+
 
 # Paso 1. Conteo de la variable
 .font105[.line-space1-5[
@@ -582,6 +586,7 @@ data3 %>%
 
 
 ---
+
 
 # Grafico de barras con dos variables
 # Paso 1
