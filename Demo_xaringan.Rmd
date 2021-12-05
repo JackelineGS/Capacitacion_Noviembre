@@ -709,10 +709,25 @@ data3 %>%
 ]
 
 ---
+class: inverse, center, middle
+# .font100[PRÁCTICA]
+
+---
+
+# Instrucciones
+.pull-left[
+1. Realice un gráfico de barras teniendo en cuenta las variables **bur_total** y **sexo**. 
+2. Realice un gráfico con las variables **convive** y **bur_total**. 
+]]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/perrito.jpg", dpi = 500)
+```
+]
 
 
-
-
+---
 
 
 
