@@ -10,7 +10,7 @@
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xf70178c996743fe9b83a50fd3a4d8a0","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x8a77f35acfa48a7a22120b6df11c067","expires":1}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -78,11 +78,14 @@ top:1em;right:1em;
 })()</script>
 </div>
 
+
+
 ---
 class: inverse
 
 background-image:url(https://pbs.twimg.com/media/DsdIzJ3VsAAbjMW?format=jpg&amp;name=small)
 background-size: cover     
+
 
 ---
 #Capas básicas
@@ -117,10 +120,10 @@ library(tidyverse)
 ```
 
 ```
-## v ggplot2 3.3.3     v purrr   0.3.4
-## v tibble  3.1.2     v dplyr   1.0.6
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.1
+## v ggplot2 3.3.5     v purrr   0.3.4
+## v tibble  3.1.6     v dplyr   1.0.7
+## v tidyr   1.1.4     v stringr 1.4.0
+## v readr   2.1.0     v forcats 0.5.1
 ```
 
 ```
@@ -145,7 +148,7 @@ ggplot(data = iris)
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -167,7 +170,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-6-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-7-1.png" width="504" /&gt;
 ]
 
 ---
@@ -188,7 +191,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-8-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
 ]
 
 ---
@@ -220,7 +223,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-10-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
 ]
 
 ---
@@ -243,7 +246,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -271,10 +274,355 @@ ggplot(data = iris,
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+]
+
+
+---
+
+#Gráfico de barras
+
+.font105[.line-space1-5[
+El gráfico de barras es una forma de resumir un conjunto de datos por **categorías** por ejemplo por fechas, sexo, países y regiones.
+]]
+
+.pull-left[
+&lt;img src="imagenes/primer_ejemplo.png" width="100%" /&gt;
+]
+
+.pull-right[
+&lt;img src="imagenes/segundo_ejemplo.png" width="100%" /&gt;
 ]
 
 ---
+
+# Paso 1. Conteo de la variable
+.font105[.line-space1-5[
+Una forma de hacer los gráficos consiste en realizar el conteo de una variable que luego será graficada. Para ello se utilizaran las funciones `count()`, `mutate()` y `factor()`. 
+]]
+
+.pull-left[
+
+```r
+data3 %&gt;%                             
+* count(ase_cat) %&gt;%
+* mutate(
+*   ase_cat = factor(ase_cat),
+*         n = factor(n)
+* )
+```
+]
+
+--
+
+.pull-right[
+
+```
+## # A tibble: 3 x 2
+##   ase_cat  n    
+##   &lt;fct&gt;    &lt;fct&gt;
+## 1 Alto     10   
+## 2 Bajo     9    
+## 3 Moderado 50
+```
+]
+
+
+---
+
+# Paso 2. Coordenadas 
+.font105[.line-space1-5[
+En el segundo argumento que se refiere a las coordenadas, con `aes`, señalaremos el contenido del eje horizontal (x) y vertical (y)
+]]
+
+
+.pull-left[
+
+```r
+data3 %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+* ggplot(aes(y = n,
+*            x = ase_cat))
+```
+]
+
+--
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-21-1.png" width="504" /&gt;
+]
+
+
+---
+
+# Paso 3. Geometrías
+.font105[.line-space1-5[
+El tercer argumento refiere a las geometrías, para ello agregamos una capa **(con el símbolo +) ** y colocamos `geom`
+]]
+.pull-left[
+
+```r
+data3 %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n,            
+             x = ase_cat)) +   
+* geom_col()
+```
+]
+
+--
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-23-1.png" width="504" /&gt;
+]
+
+---
+
+# Paso 4. Color (Parte de Estéticas)
+.font105[.line-space1-5[
+Con `aes`, además de las coordenadas, se puede colorear el gráfico. Para ello agregaremos el argumento `fill` y en este caso, coloreamos según **ase_cat**
+]]
+.pull-left[
+
+```r
+data3 %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n,               
+             x = ase_cat,         
+*         fill = ase_cat)) +
+  geom_col()
+```
+]
+
+--
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-25-1.png" width="504" /&gt;
+]
+
+---
+
+
+# Paso 5. Temas
+.font105[.line-space1-5[
+El cuarto argumento refiere a los temas o formatos de la gráfica, para ello agregamos una capa  y colocamos `theme`
+]]
+.pull-left[
+
+```r
+data3 %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n,            
+             x = ase_cat,      
+          fill = ase_cat)) +   
+  geom_col() +
+* theme_bw()
+```
+]
+
+--
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
+]
+
+---
+
+# Paso 6. Etiquetar los gáficos
+.font105[.line-space1-5[
+Este argumento es para personalizar el gráfico y será útil para denotar la altura de la barra, para ello agregamos una capa y colocamos `geom_label()`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
+]]
+.pull-left[
+
+```r
+data3 %&gt;% 
+  count(ase_cat) %&gt;%                         
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n, 
+             x = ase_cat,
+          fill = ase_cat)) +
+  geom_col() + 
+  theme_bw() +
+* geom_label(aes(label = n),
+* position = position_stack(vjust = 0.5))
+```
+]
+
+--
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
+]
+
+
+---
+
+
+# Paso 7. Etiquetas
+.font105[.line-space1-5[
+El quinto argumento refiere a las etiquetas, para ello agregamos una capa y colocamos `labs`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
+]]
+.pull-left[
+
+```r
+data3 %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n, 
+             x = ase_cat,
+          fill = ase_cat)) +
+  geom_col() + 
+  theme_bw() +
+  geom_label(aes(label = n),                         
+             position = position_stack(vjust = 0.5)) +
+* labs(
+* title = "Nivel de ansiedad",
+* subtitle = "Gráfica propia",
+* caption = "Avances en Medición Psicológica")
+```
+]
+
+--
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
+]
+
+
+---
+
+# Grafico de barras con dos variables
+# Paso 1
+.font105[.line-space1-5[
+Para este segundo gráfico utilizaremos las variables **ase_cat** y **sexo**. 
+]]
+
+.pull-left[
+
+```r
+data3 %&gt;%                             
+* count(ase_cat, sexo) %&gt;%
+* mutate(
+*   ase_cat = factor(ase_cat),
+*         n = factor(sexo)
+  )                              
+```
+]
+
+--
+
+.pull-right[
+
+```
+## # A tibble: 6 x 3
+##   ase_cat  sexo   n     
+##   &lt;fct&gt;    &lt;chr&gt;  &lt;fct&gt; 
+## 1 Alto     Hombre Hombre
+## 2 Alto     Mujer  Mujer 
+## 3 Bajo     Hombre Hombre
+## 4 Bajo     Mujer  Mujer 
+## 5 Moderado Hombre Hombre
+## 6 Moderado Mujer  Mujer
+```
+]
+
+
+---
+
+# Paso 2. Coordenadas y relleno
+.font105[.line-space1-5[
+En el segundo argumento que se refiere a las coordenadas, con `aes`, señalaremos el contenido del eje horizontal (x) y vertical (y)
+]]
+
+
+.pull-left[
+
+```r
+data3 %&gt;% 
+  count(ase_cat, sexo) %&gt;% 
+  mutate(
+*   ase_cat = factor(ase_cat),
+*         sexo = factor(sexo)
+  ) %&gt;% 
+* ggplot(aes(y = n,
+*            x = ase_cat,
+*            fill = sexo))
+```
+]
+
+--
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-35-1.png" width="504" /&gt;
+]
+
+
+---
+# Paso 3. Geometrías
+.font105[.line-space1-5[
+El tercer argumento refiere a las geometrías, para ello agregamos una capa **(con el símbolo +) ** y colocamos `geom`
+]]
+.pull-left[
+
+```r
+data3 %&gt;% 
+  count(ase_cat, sexo) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),  
+          sexo = factor(sexo)   
+  ) %&gt;% 
+  ggplot(aes(y = n,             
+             x = ase_cat,       
+             fill = sexo)) +
+* geom_col() +
+* theme_bw() +
+  geom_label(aes(label = n),                         
+*            position = position_stack(vjust = 0.5)) +
+* labs(
+* title = "Nivel de ansiedad",
+* subtitle = "Gráfica propia",
+* caption = "Avances en Medición Psicológica")
+```
+]
+
+--
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-37-1.png" width="504" /&gt;
+]
+
+---
+
+
+
+
+
+
+
+
+
 # Cuerpo: Ejemplo de diferentes secciones dentro de una diapositiva
 .font105[Prueba de integración del lenguaje **javascript**]
 

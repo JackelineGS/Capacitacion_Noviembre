@@ -58,11 +58,17 @@ xaringanExtra::use_extra_styles(
 )
 ```
 
+```{r, include=FALSE}
+data3 <- readxl::read_excel("data3_clean.xlsx")
+
+```
+
 ---
 class: inverse
 
 background-image:url(https://pbs.twimg.com/media/DsdIzJ3VsAAbjMW?format=jpg&name=small)
 background-size: cover     
+
 
 ---
 #Capas básicas
@@ -268,7 +274,450 @@ ggplot(data = iris,
 ```
 ]
 
+
 ---
+
+#Gráfico de barras
+
+.font105[.line-space1-5[
+El gráfico de barras es una forma de resumir un conjunto de datos por **categorías** por ejemplo por fechas, sexo, países y regiones.
+]]
+
+.pull-left[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/primer_ejemplo.png", dpi = 300)
+```
+]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/segundo_ejemplo.png", dpi = 500)
+```
+]
+
+---
+
+# Paso 1. Conteo de la variable
+.font105[.line-space1-5[
+Una forma de hacer los gráficos consiste en realizar el conteo de una variable que luego será graficada. Para ello se utilizaran las funciones `count()`, `mutate()` y `factor()`. 
+]]
+
+.pull-left[
+```{r, eval = FALSE}
+data3 %>%                             
+  count(ase_cat) %>%             #<<
+  mutate(                        #<<
+    ase_cat = factor(ase_cat),   #<<
+          n = factor(n)          #<<
+  )                              #<<
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE}
+data3 %>% 
+  count(ase_cat) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  )
+```
+]
+
+
+---
+
+# Paso 2. Coordenadas 
+.font105[.line-space1-5[
+En el segundo argumento que se refiere a las coordenadas, con `aes`, señalaremos el contenido del eje horizontal (x) y vertical (y)
+]]
+
+
+.pull-left[
+```{r, eval = FALSE}
+data3 %>% 
+  count(ase_cat) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n,           #<<
+             x = ase_cat))    #<<
+
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE, fig.retina = 3}
+data3 %>% 
+  count(ase_cat) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n,                 
+             x = ase_cat))    
+
+```
+]
+
+
+---
+
+# Paso 3. Geometrías
+.font105[.line-space1-5[
+El tercer argumento refiere a las geometrías, para ello agregamos una capa **(con el símbolo +) ** y colocamos `geom`
+]]
+.pull-left[
+```{r, eval = FALSE}
+data3 %>% 
+  count(ase_cat) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n,            
+             x = ase_cat)) +   
+  geom_col()                   #<<       
+
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE, fig.retina = 3}
+data3 %>% 
+  count(ase_cat) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n,            
+             x = ase_cat)) +   
+  geom_col()
+```
+]
+
+---
+
+# Paso 4. Color (Parte de Estéticas)
+.font105[.line-space1-5[
+Con `aes`, además de las coordenadas, se puede colorear el gráfico. Para ello agregaremos el argumento `fill` y en este caso, coloreamos según **ase_cat**
+]]
+.pull-left[
+```{r, eval = FALSE}
+data3 %>% 
+  count(ase_cat) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n,               
+             x = ase_cat,         
+          fill = ase_cat)) +      #<<
+  geom_col()
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE, fig.retina = 3}
+data3 %>% 
+  count(ase_cat) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n,             
+             x = ase_cat,       
+          fill = ase_cat)) +    
+  geom_col()
+```
+]
+
+---
+
+
+# Paso 5. Temas
+.font105[.line-space1-5[
+El cuarto argumento refiere a los temas o formatos de la gráfica, para ello agregamos una capa  y colocamos `theme`
+]]
+.pull-left[
+```{r, eval = FALSE}
+data3 %>% 
+  count(ase_cat) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n,            
+             x = ase_cat,      
+          fill = ase_cat)) +   
+  geom_col() +
+  theme_bw()                   #<< 
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE}
+data3 %>% 
+  count(ase_cat) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n, x = ase_cat,
+             fill = ase_cat)) +
+  geom_col() + 
+  theme_bw()
+```
+]
+
+---
+
+# Paso 6. Etiquetar los gáficos
+.font105[.line-space1-5[
+Este argumento es para personalizar el gráfico y será útil para denotar la altura de la barra, para ello agregamos una capa y colocamos `geom_label()`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
+]]
+.pull-left[
+```{r, eval = FALSE}
+
+data3 %>% 
+  count(ase_cat) %>%                         
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n, 
+             x = ase_cat,
+          fill = ase_cat)) +
+  geom_col() + 
+  theme_bw() +
+  geom_label(aes(label = n),                 #<<
+  position = position_stack(vjust = 0.5))     #<<
+
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE}
+data3 %>% 
+  count(ase_cat) %>%                         
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n, 
+             x = ase_cat,
+          fill = ase_cat)) +
+  geom_col() + 
+  theme_bw() +
+  geom_label(aes(label = n),                         
+  position = position_stack(vjust = 0.5))                                   
+```
+]
+
+
+---
+
+
+# Paso 7. Etiquetas
+.font105[.line-space1-5[
+El quinto argumento refiere a las etiquetas, para ello agregamos una capa y colocamos `labs`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
+]]
+.pull-left[
+```{r, eval = FALSE}
+
+data3 %>% 
+  count(ase_cat) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n, 
+             x = ase_cat,
+          fill = ase_cat)) +
+  geom_col() + 
+  theme_bw() +
+  geom_label(aes(label = n),                         
+             position = position_stack(vjust = 0.5)) +
+  labs(                                           #<<
+  title = "Nivel de ansiedad",                    #<<
+  subtitle = "Gráfica propia",                    #<<
+  caption = "Avances en Medición Psicológica")    #<<
+
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE}
+data3 %>% 
+  count(ase_cat) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %>% 
+  ggplot(aes(y = n, x = ase_cat,
+             fill = ase_cat)) +
+  geom_col() + 
+  theme_bw() +
+  labs(
+    title = "Nivel de ansiedad",
+    subtitle = "Gráfica propia",
+    caption = "Avances en Medición Psicológica")                                      
+```
+]
+
+
+---
+
+# Grafico de barras con dos variables
+# Paso 1
+.font105[.line-space1-5[
+Para este segundo gráfico utilizaremos las variables **ase_cat** y **sexo**. 
+]]
+
+.pull-left[
+```{r, eval = FALSE}
+data3 %>%                             
+  count(ase_cat, sexo) %>%       #<<
+  mutate(                        #<<
+    ase_cat = factor(ase_cat),   #<<
+          n = factor(sexo)       #<<
+  )                              
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE}
+data3 %>%                             
+  count(ase_cat, sexo) %>%       
+  mutate(                        
+    ase_cat = factor(ase_cat),   
+          n = factor(sexo)       
+  )    
+```
+]
+
+
+---
+
+# Paso 2. Coordenadas y relleno
+.font105[.line-space1-5[
+En el segundo argumento que se refiere a las coordenadas, con `aes`, señalaremos el contenido del eje horizontal (x) y vertical (y)
+]]
+
+
+.pull-left[
+```{r, eval = FALSE}
+data3 %>% 
+  count(ase_cat, sexo) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),  #<<
+          sexo = factor(sexo)   #<<
+  ) %>% 
+  ggplot(aes(y = n,             #<<
+             x = ase_cat,       #<<
+             fill = sexo))      #<<
+
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE, fig.retina = 3}
+data3 %>% 
+  count(ase_cat, sexo) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),  
+          sexo = factor(sexo)   
+  ) %>% 
+  ggplot(aes(y = n,             
+             x = ase_cat,       
+             fill = sexo))      
+
+```
+]
+
+
+---
+# Paso 3. Geometrías
+.font105[.line-space1-5[
+El tercer argumento refiere a las geometrías, para ello agregamos una capa **(con el símbolo +) ** y colocamos `geom`
+]]
+.pull-left[
+```{r, eval = FALSE}
+data3 %>% 
+  count(ase_cat, sexo) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),  
+          sexo = factor(sexo)   
+  ) %>% 
+  ggplot(aes(y = n,             
+             x = ase_cat,       
+             fill = sexo)) +
+  geom_col() +                                          #<<
+  theme_bw() +                                          #<<
+  geom_label(aes(label = n),                         
+             position = position_stack(vjust = 0.5)) +  #<<
+  labs(                                                 #<<
+  title = "Nivel de ansiedad",                          #<<
+  subtitle = "Gráfica propia",                          #<<
+  caption = "Avances en Medición Psicológica")          #<<       
+
+```
+]
+
+--
+
+.pull-right[
+```{r echo = FALSE, fig.retina = 3}
+data3 %>% 
+  count(ase_cat, sexo) %>% 
+  mutate(
+    ase_cat = factor(ase_cat),  
+          sexo = factor(sexo)   
+  ) %>% 
+  ggplot(aes(y = n,             
+             x = ase_cat,       
+             fill = sexo))  +
+  geom_col() +                                          
+  theme_bw() +                                          
+  geom_label(aes(label = n),                         
+             position = position_stack(vjust = 0.5)) +  
+  labs(                                                 
+  title = "Nivel de ansiedad",                          
+  subtitle = "Gráfica propia",                          
+  caption = "Avances en Medición Psicológica")                
+
+```
+]
+
+---
+
+
+
+
+
+
+
+
+
 # Cuerpo: Ejemplo de diferentes secciones dentro de una diapositiva
 .font105[Prueba de integración del lenguaje **javascript**]
 
