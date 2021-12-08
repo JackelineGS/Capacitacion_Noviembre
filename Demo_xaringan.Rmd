@@ -124,10 +124,8 @@ Las principales ventajas de usar R para la visualización de datos son:
 <img src="https://opengraph.githubassets.com/29a716519a06b53dd7a3b1ebfa6bd801962ad55d18f3c8d86fdcd4a883b9f7a3/jorgesat/30diasdegraficos" width="600px">
 </p>
 </div>
+
 ]
-
-
-
 ]
 
 .panel[.panel-name[Ejemplos]
@@ -153,11 +151,16 @@ Se utilizará el paquete `ggplot2` y una serie de extensiones como:
 - patwchork
 
 ]
-
 ]
 
+#### OJO
+```{r}
+knitr::knit_exit()
+```
+
+
 ---
-#Capas básicas
+# Capas básicas
 
 .pull-left[
 Un gráfico esta compuesto **mínimamente** por tres capas: 
@@ -167,29 +170,39 @@ Un gráfico esta compuesto **mínimamente** por tres capas:
 ]
 
 .pull-right[
-```{r, out.width = "100%", echo = FALSE}
+```{r echo = FALSE, out.width = "100%"}
 knitr::include_graphics("imagenes/ggplot2_capas_básicas.png", dpi = 500)
 ```
 ]
 
 ---
-# Paso 0. Cargar paquete 
 
-.font105[.line-space1-5[
-`Tidyverse` es un ecosistema de paquetes, entre los cuales se encuentra `ggplot2`
-]]
+.panelset[
+.panel[.panel-name[Paso 0]
 
---
+### Paso 0. Cargar paquete 
 
-```{r}
+.font105[.line-space1-3[
+`Tidyverse` es un ecosistema de paquetes, entre los cuales se encuentra `ggplot2`]]
+
+```{r message = FALSE, warning = FALSE}
 library(tidyverse)                
 ```
 
----
-# Paso 1. Base de datos
-.font105[.line-space1-5[
-El primer argumento refiere a la data, en este caso trabajaremos con `iris`, la cual viene por defecto en R
-]]
+<div>
+<p style = 'text-align:center;'>
+<img src="imagenes/tidyverse.jpg", width = "65%">
+</p>
+</div>
+
+]
+
+
+.panel[.panel-name[Paso 1]
+
+### Paso 1. Base de datos
+.font105[.line-space1-3[
+El primer argumento refiere a la data, en este caso trabajaremos con `iris`]]
 
 .pull-left[
 ```{r, eval = FALSE}
@@ -197,20 +210,18 @@ ggplot(data = iris)
 ```
 ]
 
---
-
 .pull-right[
-```{r echo = FALSE}
+```{r echo = FALSE, fig.height = 5.5, fig.width = 5.5, fig.align = "center"}
 ggplot(data = iris)
 ```
 ]
+]
 
----
-# Paso 2. Coordenadas 
-.font105[.line-space1-5[
-El segundo argumento refiere a las coordenadas, para ello colocamos `aes`, señalando eje horizontal (x) y vertical (y)
-]]
+.panel[.panel-name[Paso 2]
 
+### Paso 2. Coordenadas 
+.font105[.line-space1-3[
+El segundo argumento son las coordenadas, para ello colocamos `aes`]]
 
 .pull-left[
 ```{r, eval = FALSE}
@@ -220,21 +231,21 @@ ggplot(data = iris,
 ```
 ]
 
---
-
 .pull-right[
-```{r echo = FALSE, fig.retina = 3}
+```{r echo = FALSE, fig.height = 5.5, fig.width = 5.5, fig.align = "center"}
 ggplot(data = iris,
        aes(x = Petal.Length,
            y = Sepal.Length))  
 ```
 ]
+]
 
----
-# Paso 3. Geometrías
-.font105[.line-space1-5[
-El tercer argumento refiere a las geometrías, para ello agregamos una capa **(con el símbolo +) ** y colocamos `geom`
-]]
+.panel[.panel-name[Paso 3]
+
+### Paso 3. Geometrías
+.font105[.line-space1-3[
+El tercer argumento refiere a las geometrías, para ello agregamos una capa y colocamos `geom`]]
+
 .pull-left[
 ```{r, eval = FALSE}
 ggplot(data = iris,
@@ -244,15 +255,15 @@ ggplot(data = iris,
 ```
 ]
 
---
-
 .pull-right[
-```{r echo = FALSE, fig.retina = 3}
+```{r echo = FALSE, fig.height = 5.5, fig.width = 5.5, fig.align = "center"}
 ggplot(data = iris,
        aes(x = Petal.Length,
            y = Sepal.Length)) +
        geom_point()
 ```
+]
+]
 ]
 
 ---
@@ -276,8 +287,12 @@ background-image:url(https://pbs.twimg.com/media/EQ-uBWcX0AIc_bs.png)
 background-size: cover     
 
 ---
-# Paso 4. Color (Parte de Estéticas)
-.font105[.line-space1-5[
+
+.panelset[
+.panel[.panel-name[Paso 4]
+
+### Paso 4. Color (Parte de Estéticas)
+.font105[.line-space1-3[
 Con `aes`, además de las coordenadas, se puede colorear el gráfico. En este caso, coloreamos según **especies**
 ]]
 .pull-left[
@@ -290,10 +305,8 @@ ggplot(data = iris,
 ```
 ]
 
---
-
 .pull-right[
-```{r echo = FALSE, fig.retina = 3}
+```{r echo = FALSE, fig.height = 5, fig.width = 5, fig.align = "center"}
 ggplot(data = iris,
        aes(x = Petal.Length,
            y = Sepal.Length,
@@ -301,10 +314,12 @@ ggplot(data = iris,
        geom_point()
 ```
 ]
+]
 
----
-# Paso 5. Temas
-.font105[.line-space1-5[
+.panel[.panel-name[Paso 5]
+
+### Paso 5. Temas
+.font105[.line-space1-3[
 El cuarto argumento refiere a los temas o formatos de la gráfica, para ello agregamos una capa  y colocamos `theme`
 ]]
 .pull-left[
@@ -318,10 +333,8 @@ ggplot(data = iris,
 ```
 ]
 
---
-
 .pull-right[
-```{r echo = FALSE}
+```{r echo = FALSE, fig.height = 5, fig.width = 5, fig.align = "center"}
 ggplot(data = iris,
        aes(x = Petal.Length,
            y = Sepal.Length,
@@ -330,10 +343,11 @@ ggplot(data = iris,
        theme_classic()
 ```
 ]
+]
 
----
-# Paso 6. Etiquetas
-.font105[.line-space1-5[
+.panel[.panel-name[Paso 6]
+### Paso 6. Etiquetas
+.font105[.line-space1-3[
 El quinto argumento refiere a las etiquetas, para ello agregamos una capa y colocamos `labs`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
 ]]
 .pull-left[
@@ -352,10 +366,8 @@ ggplot(data = iris,
 ```
 ]
 
---
-
 .pull-right[
-```{r echo = FALSE}
+```{r echo = FALSE, fig.height = 5, fig.width = 5, fig.align = "center"}
 ggplot(data = iris,
        aes(x = Petal.Length,
            y = Sepal.Length,
@@ -369,41 +381,14 @@ ggplot(data = iris,
        )                                      
 ```
 ]
+]
+]
 
 ---
-# Cuerpo: Ejemplo de diferentes secciones dentro de una diapositiva
-
-.font105[Prueba de integración del lenguaje **javascript**]
-
-.panelset[
-.panel[.panel-name[Sección 1]
-
-#### 1. Título 1
-
-```
-<img src="https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png" width="300px"/>
-```
-
-]
-
-.panel[.panel-name[Sección 1]
-
-#### 2. Título 2
-
-```{r, echo=FALSE, comment=""}
-cat(c("```{r, echo=FALSE, , out.width = '30%'}",
-      "knitr::include_graphics('https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png', 
-      dpi = 600) ",
-      "```"), 
-    sep='\n')
-```
-
-]
-]
-
+class: inverse, center, middle
+# .font100[Diagrama de cajas y bigotes]
 
 ---
-
 
 class: middle
 
@@ -419,3 +404,4 @@ class: middle
 Estas diapositivas fueron creadas mediante los paquetes [xaringan](https://github.com/yihui/xaringan),  [xaringanthemer](https://github.com/gadenbuie/xaringanthemer/) y
 [xaringanExtra](https://github.com/gadenbuie/xaringanExtra). Adicionalmente, la presentación de [Brian Peña](https://github.com/brianmsm), sobre [Rmarkdown Nivel Básico](https://github.com/brianmsm/rmakdown-basico), fue tomada como guía-base para esta elaboración.
 ]
+

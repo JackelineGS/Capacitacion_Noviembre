@@ -1,0 +1,104 @@
+install.packages("datapasta", dependencies = "Depends") 
+library(datapasta)
+
+data <- tibble::tribble(
+          ~NO, ~INITIAL, ~SEX, ~AGE, ~LIVE, ~SCHOOL, ~X1, ~X2, ~X3, ~X4, ~X5, ~X6, ~X7, ~X8, ~X9, ~X10, ~X11, ~X12, ~X13, ~X14, ~X15, ~X16, ~X17, ~X18, ~X19, ~X20, ~X21, ~X22, ~X23, ~X24, ~X25, ~X26, ~X27, ~X28, ~X29, ~X30, ~X31, ~TOTAL, ~CODING,
+           1L,      "N",   2L,  18L,    1L,      2L,  2L,  2L,  2L,  1L,  2L,  2L,  2L,  1L,  3L,   2L,   2L,   2L,   1L,   1L,   2L,   1L,   1L,   2L,   2L,   1L,   1L,   3L,   1L,   1L,   2L,   2L,   2L,   2L,   2L,   1L,   2L,    53L,      1L,
+           2L,     "AR",   2L,  20L,    1L,      3L,  3L,  4L,  3L,  3L,  3L,  3L,  3L,  4L,  3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   1L,   2L,   4L,   4L,   3L,   3L,   4L,   3L,    95L,      3L,
+           3L,      "L",   2L,  20L,    1L,      3L,  3L,  3L,  4L,  4L,  4L,  4L,  4L,  4L,  4L,   3L,   3L,   3L,   2L,   3L,   3L,   3L,   2L,   3L,   3L,   3L,   2L,   3L,   3L,   3L,   2L,   3L,   2L,   3L,   3L,   3L,   4L,    96L,      3L,
+           4L,      "N",   1L,  18L,    2L,      1L,  3L,  3L,  3L,  4L,  4L,  4L,  3L,  3L,  3L,   3L,   2L,   3L,   3L,   4L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   1L,   3L,   3L,   2L,   3L,   3L,   3L,   3L,    93L,      2L,
+           5L,    "TAP",   2L,  19L,    2L,      3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,    93L,      2L,
+           6L,     "BN",   2L,  19L,    2L,      1L,  3L,  3L,  3L,  4L,  4L,  3L,  3L,  3L,  4L,   4L,   3L,   4L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   4L,   4L,   3L,   3L,   3L,   4L,   3L,   3L,   4L,   4L,   103L,      3L,
+           7L,  "RMANA",   2L,  19L,    2L,      1L,  3L,  4L,  3L,  3L,  3L,  3L,  3L,  3L,  4L,   4L,   3L,   4L,   3L,   3L,   3L,   3L,   4L,   3L,   3L,   3L,   3L,   4L,   4L,   3L,   3L,   3L,   3L,   3L,   4L,   4L,   3L,   102L,      3L,
+           8L,     "FH",   2L,  19L,    2L,      1L,  3L,  3L,  3L,  4L,  3L,  3L,  3L,  2L,  4L,   4L,   3L,   3L,   3L,   3L,   3L,   3L,   2L,   3L,   4L,   3L,   2L,   4L,   3L,   2L,   4L,   2L,   4L,   4L,   4L,   3L,   3L,    97L,      3L,
+           9L,    "DDF",   1L,  19L,    1L,      1L,  3L,  4L,  4L,  4L,  4L,  3L,  3L,  3L,  4L,   4L,   4L,   3L,   3L,   4L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   4L,   4L,   3L,   4L,   4L,   2L,   104L,      3L,
+          10L,      "I",   2L,  19L,    2L,      3L,  2L,  2L,  2L,  2L,  3L,  3L,  3L,  2L,  3L,   3L,   2L,   3L,   2L,   3L,   3L,   3L,   2L,   2L,   4L,   4L,   2L,   3L,   3L,   2L,   2L,   2L,   4L,   4L,   4L,   4L,   4L,    87L,      2L,
+          11L,      "M",   2L,  19L,    1L,      1L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   2L,   2L,   3L,   3L,   3L,   3L,   3L,   3L,    91L,      2L,
+          12L,      "P",   2L,  19L,    2L,      2L,  2L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,   3L,   3L,   3L,   2L,   3L,   3L,   2L,   2L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   4L,   3L,   3L,   3L,   3L,    90L,      2L,
+          13L,    "PSN",   2L,  20L,    2L,      4L,  3L,  3L,  3L,  3L,  3L,  4L,  4L,  3L,  4L,   4L,   3L,   4L,   3L,   4L,   4L,   3L,   3L,   4L,   3L,   3L,   3L,   3L,   3L,   2L,   2L,   2L,   3L,   3L,   3L,   3L,   3L,    98L,      3L,
+          14L,      "N",   2L,  19L,    2L,      3L,  3L,  3L,  4L,  4L,  3L,  3L,  3L,  1L,  4L,   4L,   3L,   3L,   1L,   4L,   3L,   3L,   3L,   3L,   4L,   4L,   3L,   4L,   4L,   3L,   4L,   3L,   4L,   4L,   4L,   4L,   4L,   104L,      3L,
+          15L,     "LY",   2L,  18L,    1L,      2L,  3L,  4L,  4L,  4L,  4L,  4L,  3L,  3L,  4L,   4L,   3L,   4L,   3L,   3L,   4L,   3L,   4L,   4L,   3L,   4L,   4L,   4L,   3L,   4L,   3L,   4L,   4L,   4L,   4L,   4L,   4L,   114L,      3L,
+          16L,      "S",   2L,  19L,    2L,      1L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    85L,      2L,
+          17L,      "Y",   2L,  19L,    2L,      1L,  2L,  2L,  3L,  3L,  4L,  4L,  3L,  4L,  4L,   4L,   1L,   4L,   2L,   3L,   3L,   2L,   2L,   3L,   4L,   3L,   2L,   3L,   3L,   3L,   3L,   2L,   4L,   4L,   3L,   3L,   2L,    92L,      2L,
+          18L,      "R",   2L,  19L,    2L,      2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    63L,      2L,
+          19L,      "E",   2L,  18L,    2L,      3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  2L,  3L,   4L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   2L,   2L,   3L,   3L,   3L,   3L,    91L,      2L,
+          20L,    "AWP",   2L,  19L,    1L,      3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,   4L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   4L,   4L,   3L,   4L,   4L,    98L,      3L,
+          21L,     "RR",   1L,  19L,    2L,      1L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,   4L,   3L,   3L,   2L,   3L,   3L,   3L,   2L,   3L,   3L,   3L,   2L,   3L,   3L,   3L,   3L,   2L,   3L,   3L,   3L,   3L,   3L,    90L,      2L,
+          22L,      "M",   2L,  21L,    1L,      1L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,  3L,   4L,   3L,   3L,   2L,   2L,   3L,   2L,   2L,   3L,   3L,   3L,   2L,   3L,   3L,   2L,   2L,   3L,   3L,   3L,   3L,   3L,   3L,    87L,      2L,
+          23L,      "P",   1L,  20L,    2L,      1L,  2L,  2L,  1L,  2L,  3L,  2L,  3L,  1L,  3L,   2L,   1L,   3L,   1L,   2L,   3L,   1L,   1L,   2L,   1L,   2L,   1L,   2L,   2L,   1L,   2L,   2L,   2L,   2L,   2L,   2L,   1L,    57L,      1L,
+          24L,    "SNO",   2L,  20L,    2L,      1L,  2L,  3L,  3L,  3L,  3L,  3L,  3L,  2L,  3L,   3L,   2L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   2L,   2L,   3L,   3L,   2L,   2L,   3L,   3L,    86L,      2L,
+          25L,      "I",   2L,  19L,    1L,      1L,  2L,  1L,  3L,  3L,  3L,  2L,  3L,  1L,  2L,   2L,   2L,   2L,   1L,   1L,   2L,   2L,   1L,   2L,   2L,   2L,   2L,   3L,   2L,   1L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    61L,      1L,
+          26L,      "F",   2L,  18L,    2L,      1L,  2L,  2L,  1L,  2L,  1L,  2L,  2L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   1L,   1L,   1L,   1L,   3L,   1L,   1L,   2L,   2L,   4L,   3L,   4L,   2L,   4L,   3L,    63L,      2L,
+          27L,     "DA",   2L,  20L,    1L,      2L,  3L,  2L,  1L,  2L,  2L,  1L,  2L,  1L,  1L,   2L,   2L,   3L,   2L,   3L,   2L,   3L,   1L,   2L,   2L,   2L,   3L,   3L,   4L,   4L,   4L,   4L,   4L,   4L,   3L,   4L,   3L,    79L,      2L,
+          28L,     "PA",   2L,  19L,    2L,      1L,  3L,  2L,  2L,  3L,  2L,  1L,  2L,  2L,  3L,   3L,   2L,   3L,   1L,   2L,   2L,   2L,   2L,   2L,   1L,   3L,   1L,   1L,   3L,   3L,   4L,   2L,   4L,   4L,   4L,   4L,   4L,    77L,      2L,
+          29L,    "AFH",   1L,  20L,    2L,      1L,  1L,  3L,  3L,  2L,  2L,  3L,  1L,  3L,  1L,   2L,   2L,   3L,   1L,   3L,   3L,   3L,   2L,   3L,   4L,   3L,   1L,   2L,   3L,   1L,   1L,   4L,   4L,   4L,   3L,   4L,   4L,    79L,      2L,
+          30L,     "TS",   1L,  19L,    2L,      2L,  3L,  3L,  2L,  3L,  1L,  3L,  4L,  4L,  3L,   3L,   2L,   3L,   4L,   3L,   4L,   4L,   3L,   2L,   2L,   2L,   3L,   3L,   2L,   1L,   2L,   3L,   2L,   2L,   3L,   2L,   2L,    83L,      2L,
+          31L,      "B",   1L,  19L,    2L,      3L,  2L,  2L,  2L,  2L,  3L,  2L,  3L,  2L,  3L,   3L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    68L,      2L,
+          32L,     "ND",   2L,  20L,    2L,      4L,  2L,  2L,  3L,  2L,  2L,  2L,  2L,  2L,  3L,   3L,   2L,   2L,   2L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    67L,      2L,
+          33L,      "O",   2L,  18L,    2L,      1L,  2L,  3L,  2L,  2L,  3L,  2L,  3L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   3L,   3L,   3L,   3L,   3L,   2L,    71L,      2L,
+          34L,    "MAC",   2L,  19L,    2L,      3L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    62L,      2L,
+          35L,      "N",   2L,  18L,    1L,      1L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   3L,   2L,   3L,   2L,   3L,   2L,   2L,   2L,   1L,   2L,   2L,   2L,   2L,   2L,   3L,   3L,   3L,   3L,   2L,   2L,   2L,   2L,    68L,      2L,
+          36L,     "NI",   2L,  19L,    2L,      1L,  1L,  2L,  2L,  2L,  2L,  2L,  2L,  1L,  2L,   2L,   2L,   2L,   1L,   1L,   2L,   1L,   1L,   2L,   2L,   2L,   3L,   1L,   1L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   1L,    54L,      1L,
+          37L,      "E",   2L,  19L,    2L,      3L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,   3L,   3L,   3L,   3L,   3L,   3L,    70L,      2L,
+          38L,    "WPS",   2L,  19L,    2L,      1L,  2L,  2L,  1L,  1L,  1L,  1L,  1L,  1L,  1L,   1L,   1L,   1L,   1L,   1L,   1L,   1L,   2L,   1L,   1L,   2L,   2L,   1L,   1L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    44L,      1L,
+          39L,      "A",   2L,  19L,    2L,      1L,  1L,  2L,  2L,  3L,  3L,  2L,  2L,  1L,  2L,   2L,   1L,   2L,   1L,   1L,   2L,   1L,   1L,   2L,   2L,   1L,   1L,   3L,   2L,   2L,   2L,   1L,   2L,   2L,   2L,   1L,   1L,    53L,      1L,
+          40L,      "R",   2L,  19L,    1L,      2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  3L,   3L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    65L,      2L,
+          41L,     "FN",   2L,  19L,    1L,      1L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,    64L,      2L,
+          42L,      "S",   1L,  19L,    2L,      1L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   3L,   2L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    64L,      2L,
+          43L,     "SP",   1L,  19L,    2L,      1L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,   2L,   3L,   2L,   3L,   2L,    65L,      2L,
+          44L,      "S",   1L,  19L,    2L,      1L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   3L,   2L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    64L,      2L,
+          45L,      "P",   1L,  20L,    2L,      1L,  2L,  2L,  1L,  2L,  3L,  2L,  3L,  1L,  3L,   2L,   1L,   3L,   1L,   2L,   3L,   1L,   1L,   2L,   1L,   2L,   1L,   2L,   2L,   1L,   2L,   2L,   2L,   2L,   2L,   2L,   1L,    57L,      1L,
+          46L,      "S",   2L,  20L,    2L,      1L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  3L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    64L,      2L,
+          47L,     "AA",   2L,  20L,    2L,      3L,  2L,  2L,  2L,  2L,  3L,  3L,  2L,  2L,  3L,   3L,   3L,   3L,   3L,   3L,   2L,   2L,   2L,   2L,   3L,   3L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,   2L,   2L,   2L,   2L,    73L,      2L,
+          48L,      "N",   2L,  21L,    1L,      1L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  3L,  3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   2L,   3L,   3L,   3L,   2L,   2L,   3L,   2L,   2L,   2L,   2L,   3L,   2L,   2L,   2L,    76L,      2L,
+          49L,      "A",   1L,  19L,    1L,      2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,    70L,      2L,
+          50L,    "RAN",   2L,  19L,    2L,      3L,  3L,  3L,  2L,  2L,  2L,  2L,  3L,  2L,  3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,   2L,   2L,   2L,   2L,    67L,      2L,
+          51L,      "D",   2L,  19L,    1L,      3L,  1L,  2L,  2L,  3L,  3L,  3L,  2L,  3L,  1L,   2L,   3L,   2L,   3L,   1L,   2L,   3L,   1L,   1L,   2L,   2L,   2L,   2L,   3L,   3L,   1L,   2L,   3L,   3L,   3L,   1L,   2L,    67L,      2L,
+          52L,      "A",   1L,  20L,    1L,      2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    62L,      2L,
+          53L,      "A",   2L,  19L,    2L,      2L,  3L,  3L,  2L,  2L,  3L,  2L,  2L,  2L,  3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    67L,      2L,
+          54L,      "D",   2L,  18L,    2L,      3L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,    63L,      2L,
+          55L,      "R",   2L,  19L,    2L,      2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    63L,      2L,
+          56L,      "N",   2L,  19L,    1L,      2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   3L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    64L,      2L,
+          57L,     "TH",   1L,  19L,    1L,      1L,  2L,  2L,  3L,  2L,  2L,  3L,  2L,  2L,  2L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    67L,      2L,
+          58L,      "I",   2L,  19L,    1L,      1L,  2L,  1L,  3L,  3L,  3L,  2L,  3L,  1L,  2L,   2L,   2L,   2L,   1L,   1L,   2L,   2L,   1L,   2L,   2L,   2L,   2L,   3L,   2L,   1L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    61L,      1L,
+          59L,      "T",   2L,  19L,    2L,      3L,  1L,  2L,  3L,  2L,  3L,  1L,  2L,  1L,  2L,   2L,   1L,   3L,   1L,   1L,   2L,   1L,   1L,   2L,   1L,   2L,   2L,   3L,   2L,   1L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    56L,      1L,
+          60L,     "PA",   2L,  19L,    2L,      1L,  3L,  3L,  3L,  2L,  3L,  3L,  3L,  2L,  3L,   3L,   2L,   3L,   2L,   3L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   3L,   2L,    82L,      2L,
+          61L,    "EPD",   1L,  18L,    1L,      1L,  2L,  2L,  3L,  3L,  3L,  3L,  3L,  2L,  3L,   3L,   2L,   3L,   2L,   2L,   3L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,   2L,   2L,   1L,   4L,   2L,   4L,   3L,   1L,    75L,      2L,
+          62L,     "RY",   2L,  19L,    2L,      1L,  3L,  2L,  2L,  3L,  3L,  2L,  3L,  1L,  2L,   3L,   2L,   3L,   1L,   1L,   2L,   2L,   1L,   2L,   2L,   2L,   2L,   3L,   2L,   1L,   2L,   2L,   2L,   3L,   3L,   2L,   2L,    66L,      2L,
+          63L,      "D",   2L,  19L,    2L,      3L,  1L,  2L,  2L,  3L,  3L,  3L,  2L,  3L,  1L,   2L,   3L,   2L,   3L,   1L,   2L,   3L,   1L,   1L,   2L,   2L,   2L,   2L,   3L,   3L,   1L,   2L,   3L,   3L,   3L,   1L,   2L,    67L,      2L,
+          64L,      "F",   2L,  19L,    2L,      1L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,    63L,      2L,
+          65L,      "M",   2L,  19L,    2L,      2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,   2L,    62L,      2L,
+          66L,      "N",   2L,  18L,    1L,      1L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,  2L,   3L,   2L,   3L,   2L,   3L,   2L,   2L,   2L,   1L,   2L,   2L,   2L,   2L,   2L,   3L,   3L,   3L,   3L,   2L,   2L,   2L,   2L,    68L,      2L,
+          67L,     "HS",   2L,  23L,    1L,      1L,  2L,  2L,  2L,  3L,  3L,  2L,  2L,  1L,  3L,   2L,   3L,   3L,   1L,   1L,   1L,   2L,   2L,   2L,   2L,   2L,   2L,   3L,   2L,   1L,   2L,   2L,   3L,   2L,   3L,   2L,   2L,    65L,      2L,
+          68L,      "A",   2L,  19L,    2L,      3L,  3L,  2L,  3L,  3L,  3L,  2L,  2L,  1L,  2L,   2L,   2L,   3L,   1L,   1L,   2L,   1L,   1L,   2L,   2L,   2L,   1L,   3L,   2L,   1L,   2L,   2L,   3L,   3L,   2L,   3L,   2L,    64L,      2L,
+          69L,       NA,   2L,  17L,    2L,      1L,  3L,  2L,  3L,  3L,  3L,  2L,  3L,  1L,  2L,   2L,   3L,   2L,   1L,   2L,   1L,   2L,   2L,   2L,   2L,   1L,   3L,   2L,   2L,   2L,   1L,   2L,   2L,   2L,   3L,   1L,   2L,    64L,      2L
+          )
+
+
+data %>% view()
+getwd()
+
+library(knitr)
+purl(
+  input = "Demo_xaringan.Rmd",
+  output = "my_script.R"
+)
+
+
+library(ggthemes)
+
+ggplot(data = iris,
+       aes(x = Species,
+           fill = Species)) +
+  geom_bar() +
+  scale_fill_economist()
+
+remotes::install_github("brandmaier/ggx")
+library(ggx)
+
+gghelp("add subtitle")
+
+
+
+
+
