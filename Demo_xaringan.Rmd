@@ -280,13 +280,15 @@ class: inverse, center, middle
 # .font100[GRÁFICO DE BARRAS]
 
 ---
-# .font100[Definicion y ejemplos]
+# .font100[Definicion]
 
 
 .pull-left[
-Los gráficos de barras permiten resumir un conjunto de datos según una **categorías** por ejemplo por según fechas, sexo, países y regiones, entre otros. 
+Los gráficos de barras permiten resumir un conjunto de datos según una **categoría** por ejemplo según fechas, sexo, países, regiones, entre otros. 
 
-El gráfico fue extraido de la investigación **The real life impact of vaccination on COVID-19 mortality in Europe and Israel** (https://doi.org/10.1016/j.puhe.2021.07.037). 
+La figura muestra las proporciones medias de `variantes de COVID-19` en los distintos países entre enero de 2020 y abril de 2021. 
+
+La imagen puede apreciarse de forma más detallada en el siguiente link (https://ars.els-cdn.com/content/image/1-s2.0-S0033350621003073-gr1.jpg)
 ]
 
 
@@ -297,7 +299,7 @@ knitr::include_graphics("imagenes/articulo_barras.jpg", dpi = 500)
 ]
 
 .pull-right[
-La figura muestra las proporciones medias de variantes de COVID-19 en los distintos países entre enero de 2020 y abril de 2021 (https://ars.els-cdn.com/content/image/1-s2.0-S0033350621003073-gr1.jpg)
+El gráfico fue extraido de la investigación **The real life impact of vaccination on COVID-19 mortality in Europe and Israel** (https://doi.org/10.1016/j.puhe.2021.07.037). 
 ]
 
 
