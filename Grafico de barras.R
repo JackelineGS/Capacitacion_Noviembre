@@ -6,6 +6,7 @@ pacman::p_load(tidyverse)
 #Importación
 
 BD <- readxl::read_excel("data3_clean.xlsx")
+names(BD)
 
 #Visualización de la data - variables
 
