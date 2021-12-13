@@ -73,6 +73,165 @@ xaringanExtra::use_extra_styles(
 
 ---
 
+# ¿Qué es la visualización de datos?
+.font105[Algunas **definiciones** (Cairo, 2016).]
+
+.panelset[
+.panel[.panel-name[Visualización]
+
+#### 1. Definición
+
+.pull-left[
+**Visualización** es un tipo de representación visual de información diseñada para permitir la comunicación, el análisis, el descubrimiento, la exploración, etc.
+
+]
+
+.pull-right[
+<div>
+<p style = 'text-align:center;'>
+<img src = "https://loquenadietedice.com/wp-content/uploads/2017/09/hombre-visualizando.jpg" width="350px">
+
+]
+]
+
+.panel[.panel-name[Gráfico]
+
+#### 2. Definición
+
+
+.pull-left[
+Un **gráfico** (chart o plot como sinónimos) es una representación en la que los datos se codifican con símbolos que tienen diferentes formas, colores o proporciones.]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/0.2.PNG", dpi = 600)
+```
+]
+
+]
+
+.panel[.panel-name[Mapa]
+
+#### 3. Definición
+
+.pull-left[
+Un **mapa** es una representación de un área geográfica o una representación de los datos que pertenecen a esa área geográfica.]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/0.3.PNG", dpi = 600)
+```
+]
+
+]
+
+.panel[.panel-name[Infografía]
+
+#### 4. Definición
+
+.pull-left[Una **infografía** es una representación visual multiseccional de información con la intención de comunicar uno o más mensajes específicos. Son una mezcla de gráficos, mapas, ilustraciones y texto que brinda explicación y contexto.
+]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/0.4.PNG", dpi = 600)
+```
+]
+
+
+]
+
+.panel[.panel-name[Visualización de datos]
+
+#### 5. Definición
+
+.pull-left[
+-	Representación de datos diseñada para permitir el análisis, la exploración y el descubrimiento.
+
+-	No busca transmitir mensajes predefinidos por sus diseñadores.
+
+-	Herramienta que permite a las personas extraer sus propias conclusiones de los datos.
+
+]
+
+.pull-right[
+<div>
+<p style = 'text-align:center;'>
+<img src = "https://neixar.com/wp-content/uploads/2019/06/Visualizaci%C3%B3n-Neixar-imagen-destacada-846x656.jpg" width="350px">
+]
+
+]
+]
+
+---
+
+##¿Por qué es importante visualizar los datos? (Healy, 2019)
+
+- Diferente distribución, mismo coeficiente de correlación.
+- Análisis de distribución de los datos y corroborar si cumple los supuestos fundamentales de las técnicas estadísticas.
+
+.pull-left[
+```{r, out.width = "70%", echo = FALSE}
+knitr::include_graphics("imagenes/1.PNG", dpi = 500)
+```
+]
+
+.pull-right[
+```{r, out.width = "60%", echo = FALSE}
+knitr::include_graphics("imagenes/2.PNG", dpi = 500)
+```
+]
+
+---
+
+##¿Por qué es importante conocer sobre visualización de datos? 
+
+####Para entender los errores comunes en la construcción de gráficos y evitarlos en el futuro (Healy, 2019).
+
+.panelset[
+.panel[.panel-name[El mal gusto]
+
+Utilizar excesivos elementos gráficos que dificultan la interpretación.
+
+```{r, out.width = "70%", echo = FALSE}
+knitr::include_graphics("imagenes/3.PNG", dpi = 500)
+```
+
+]
+
+.panel[.panel-name[Datos errados 1]
+
+Forzar la interpretación de los datos a intereses particulares.
+
+
+```{r, out.width = "90%", echo = FALSE}
+knitr::include_graphics("imagenes/4.PNG", dpi = 500)
+```
+]
+
+.panel[.panel-name[Datos errados 2]
+
+Forzar la interpretación de los datos a intereses particulares.
+
+
+```{r, out.width = "80%", echo = FALSE}
+knitr::include_graphics("imagenes/5.PNG", dpi = 500)
+```
+]
+
+.panel[.panel-name[Problemas de percepción]
+
+La forma y el color que se elija pueden ser claves.
+
+
+```{r, out.width = "95%", echo = FALSE}
+knitr::include_graphics("imagenes/6.PNG", dpi = 500)
+```
+]
+]
+
+---
+
 # Visualización de datos con R
 
 .panelset[
@@ -152,12 +311,6 @@ Se utilizará el paquete `ggplot2` y una serie de extensiones como:
 
 ]
 ]
-
-#### OJO
-```{r}
-knitr::knit_exit()
-```
-
 
 ---
 # Capas básicas
@@ -272,15 +425,6 @@ class: inverse, center, middle
 
 ---
 
-```{r echo = FALSE}
-library(countdown)
-```
-
-```{r}
-countdown(minutes = 10, seconds = 10, play_sound = TRUE)
-```
-
----
 class: inverse
 
 background-image:url(https://pbs.twimg.com/media/EQ-uBWcX0AIc_bs.png)
@@ -346,10 +490,12 @@ ggplot(data = iris,
 ]
 
 .panel[.panel-name[Paso 6]
+
 ### Paso 6. Etiquetas
 .font105[.line-space1-3[
 El quinto argumento refiere a las etiquetas, para ello agregamos una capa y colocamos `labs`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
 ]]
+
 .pull-left[
 ```{r, eval = FALSE}
 ggplot(data = iris,
@@ -385,8 +531,368 @@ ggplot(data = iris,
 ]
 
 ---
+
+class: inverse, center, middle
+# .font150[HISTOGRAMA]
+
+---
+
+# HISTOGRAMA
+.font105[**Descripción general (Harris, 1999; Zedeck, 2013)**]
+
+.panelset[
+.panel[.panel-name[Definición]
+
+
+Representación gráfica de datos continuos mediante barras de altura variable, similar a un GRÁFICO DE BARRAS, pero con bloques en el eje X; contiguos entre sí para denotar su naturaleza continua.
+
+<div>
+<p style = 'text-align:center;'>
+<img src = "https://lh3.googleusercontent.com/proxy/uCRx5QAbNk_Nge3CdH-SMQKU2PKoicbSEo-HneCKmvgMwt4mVY6e00Xy1ELK3rSu0yG9zTGxHjxt5TqGtOXEG7CRhdfW8mcrdijbCs9AwmZdRJjY5uHRt0e7VrHNS1LZOriJrkr_zScN64xSMzgRCMY3lNFlmKjH4uPSjXy3SfkJM5iqhn0fLHFMvxE" width="350px">
+
+]
+]
+
+.panel[.panel-name[Proceso 1]
+
+####1. Dado un conjunto de datos:
+
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/Histo_1.PNG", dpi = 500)
+```
+]
+
+.panel[.panel-name[Proceso 2]
+
+####2. Los datos datos representados en una coordenada.
+
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/Histo_2.PNG", dpi = 500)
+```
+]
+
+.panel[.panel-name[Proceso 3]
+
+####3. Se forman intervalos de clase con la misma amplitud y se contabilizan los datos de cada intervalo de clase.
+
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/Histo_3.PNG", dpi = 500)
+```
+]
+
+.panel[.panel-name[Proceso 4]
+
+####4.	Introducción de columnas en cada uno de los intervalos de clase.
+
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/Histo_4.PNG", dpi = 500)
+```
+
+]
+
+.panel[.panel-name[Intervalos de clase]
+
+Rango de puntuaciones o valores numéricos que constituyen un segmento o clase de una variable de interés. 
+
+####Amplitud de intervalo de clase, Regla de Sturges
+
+
+```{r, out.width = "120%", echo = FALSE}
+knitr::include_graphics("imagenes/Histogram_1.PNG", dpi = 500)
+```
+- R = Rango, la diferencia entre el mayor y menor valor del conjunto de datos
+- k = número de intervalos de clase
+- N = número de valores en el conjunto de datos en observación
+
+]
+]
+
+---
+
+# HISTOGRAMA
+.font105[**Presentación básica de un histograma en R**]
+
+.panelset[
+.panel[.panel-name[Paso 1]
+
+#### 1. Cargar paquetes
+
+- `tidyverse` y `patchwork`
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(patchwork)
+```
+
+```{r warning=FALSE, message=FALSE, eval=FALSE}
+library(pacman)
+pacman:p_load(tidyverse, patchwork)
+```
+
+
+
+.panel[.panel-name[Paso 2]
+
+#### 2. Importar datos.
+
+.font105[
+```{r warning=FALSE, message=FALSE}
+data <- read_csv(file = "data3_clean.csv")
+```
+
+```{r echo=FALSE}
+head(data, 4) 
+```
+]
+]
+
+
+.panel[.panel-name[Paso 3]
+
+#### 3. Cargar datos en ggplot.
+
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data)
+```
+]
+
+.pull-right[
+```{r echo = FALSE, out.width = "70%"}
+ggplot(data)
+```
+]
+
+]
+
+.panel[.panel-name[Paso 4]
+
+#### 4. Indicar la variable de análisis con aes.
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) 
+```
+]
+
+.pull-right[
+```{r echo = FALSE, out.width = "70%"}
+ggplot(data, aes(x = ase_total)) 
+```
+]
+]
+
+.panel[.panel-name[Paso 5]
+
+#### 5. Señalar que se trabajará con un gráfico de histograma.
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram()
+```
+]
+
+.pull-right[
+```{r echo=FALSE, message=FALSE, out.width="70%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram()
+```
+]
+
+]
+]
+]
+
+
+---
+# HISTOGRAMA
+.font105[**Personalización de un histograma**]
+
+.panelset[
+.panel[.panel-name[Paso 6]
+
+#### 6. Amplitud de intervalo utilizando la regla de Sturges `function(x) (max(x)-min(x))/nclass.Sturges(x)`.
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = 7))
+```
+
+
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x))
+```
+
+]
+
+.pull-right[
+```{r echo = FALSE, out.width = "70%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(
+    binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x))
+```
+]
+]
+
+.panel[.panel-name[Paso 7]
+
+####7. Color y relleno.
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue")
+```
+]
+
+.pull-right[
+```{r echo = FALSE, out.width = "70%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue")
+```
+]
+]
+
+
+
+.panel[.panel-name[Paso 8]
+
+#### 8. Tema.
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") +
+  theme_classic()
+```
+]
+
+.pull-right[
+```{r echo = FALSE, out.width = "70%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") +
+  theme_classic()
+```
+]
+]
+
+.panel[.panel-name[Paso 9]
+
+#### 9. Anotaciones `labs`.
+
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica",
+    subtitle = "Base de datos de Rohmani & Andriani (2021)",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  theme_classic()
+```
+]
+
+.pull-right[
+```{r echo = FALSE, out.width = "70%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica",
+    subtitle = "Base de datos de Rohmani & Andriani (2021)",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  theme_classic()
+```
+]
+
+]
+
+.panel[.panel-name[Paso 10]
+
+#### 10. Utilizar facet_wrap para visualizar los resultados según un tipo de variable categórica.
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica según el sexo",
+    subtitle = "Base de datos de Rohmani & Andriani (2021)",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  facet_wrap(vars(sexo)) + 
+  theme_classic()
+```
+]
+
+.pull-right[
+```{r echo = FALSE, out.width = "70%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica según el sexo",
+    subtitle = "Base de datos de Rohmani & Andriani (2021)",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  facet_wrap(vars(sexo)) + 
+  theme_classic()
+```
+]
+]
+]
+
+---
+
+```{r echo = FALSE}
+library(countdown)
+```
+
+```{r}
+countdown(minutes = 10, seconds = 10, play_sound = TRUE)
+```
+
+---
 class: inverse, center, middle
 # .font100[Diagrama de cajas y bigotes]
+
+---
+
+## Bibliografía
+
+- Cairo, A. (2016). The Truthful Art: Data, Charts, and Maps for Communication.
+
+- Harris, R. L. (1999). Information Graphics. A Comprehensive Illustrated Reference. Visual Tools for Analyzing, Managing, and Communicating. Oxford University Press.
+
+- Healy, K. (2019). Data Visualization: A Practical Introduction. In IEEE Transactions on Professional Communication.
+https://doi.org/10.1109/TPC.2019.2922787
+
+- Zedeck, S. (Ed.). (2013). APA Dictionary of Statistics and Research Methods. American Psychological Association.
 
 ---
 

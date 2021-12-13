@@ -10,7 +10,7 @@
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"a0d93faf5f62463fbb0fd50c2a7751d4","expires":14}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xee143c052a94e969c751f4e84afeb94","expires":14}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -25,6 +25,8 @@
     <script>window.xaringanExtraClipboard(null, {"button":"Copiar","success":"Copiado","error":"Presiona Ctrl+C para copiar"})</script>
     <script src="libs/xaringanExtra_fit-screen/fit-screen.js"></script>
     <link href="libs/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="xaringan-extra.css" type="text/css" />
   </head>
@@ -83,6 +85,147 @@ top:1em;right:1em;
   document.addEventListener('DOMContentLoaded', addLogo)
 })()</script>
 </div>
+
+---
+
+# ¿Qué es la visualización de datos?
+.font105[Algunas **definiciones** (Cairo, 2016).]
+
+.panelset[
+.panel[.panel-name[Visualización]
+
+#### 1. Definición
+
+.pull-left[
+**Visualización** es un tipo de representación visual de información diseñada para permitir la comunicación, el análisis, el descubrimiento, la exploración, etc.
+
+]
+
+.pull-right[
+&lt;div&gt;
+&lt;p style = 'text-align:center;'&gt;
+&lt;img src = "https://loquenadietedice.com/wp-content/uploads/2017/09/hombre-visualizando.jpg" width="350px"&gt;
+
+]
+]
+
+.panel[.panel-name[Gráfico]
+
+#### 2. Definición
+
+
+.pull-left[
+Un **gráfico** (chart o plot como sinónimos) es una representación en la que los datos se codifican con símbolos que tienen diferentes formas, colores o proporciones.]
+
+.pull-right[
+&lt;img src="imagenes/0.2.PNG" width="100%" /&gt;
+]
+
+]
+
+.panel[.panel-name[Mapa]
+
+#### 3. Definición
+
+.pull-left[
+Un **mapa** es una representación de un área geográfica o una representación de los datos que pertenecen a esa área geográfica.]
+
+.pull-right[
+&lt;img src="imagenes/0.3.PNG" width="100%" /&gt;
+]
+
+]
+
+.panel[.panel-name[Infografía]
+
+#### 4. Definición
+
+.pull-left[Una **infografía** es una representación visual multiseccional de información con la intención de comunicar uno o más mensajes específicos. Son una mezcla de gráficos, mapas, ilustraciones y texto que brinda explicación y contexto.
+]
+
+.pull-right[
+&lt;img src="imagenes/0.4.PNG" width="100%" /&gt;
+]
+
+
+]
+
+.panel[.panel-name[Visualización de datos]
+
+#### 5. Definición
+
+.pull-left[
+-	Representación de datos diseñada para permitir el análisis, la exploración y el descubrimiento.
+
+-	No busca transmitir mensajes predefinidos por sus diseñadores.
+
+-	Herramienta que permite a las personas extraer sus propias conclusiones de los datos.
+
+]
+
+.pull-right[
+&lt;div&gt;
+&lt;p style = 'text-align:center;'&gt;
+&lt;img src = "https://neixar.com/wp-content/uploads/2019/06/Visualizaci%C3%B3n-Neixar-imagen-destacada-846x656.jpg" width="350px"&gt;
+]
+
+]
+]
+
+---
+
+##¿Por qué es importante visualizar los datos? (Healy, 2019)
+
+- Diferente distribución, mismo coeficiente de correlación.
+- Análisis de distribución de los datos y corroborar si cumple los supuestos fundamentales de las técnicas estadísticas.
+
+.pull-left[
+&lt;img src="imagenes/1.PNG" width="70%" /&gt;
+]
+
+.pull-right[
+&lt;img src="imagenes/2.PNG" width="60%" /&gt;
+]
+
+---
+
+##¿Por qué es importante conocer sobre visualización de datos? 
+
+####Para entender los errores comunes en la construcción de gráficos y evitarlos en el futuro (Healy, 2019).
+
+.panelset[
+.panel[.panel-name[El mal gusto]
+
+Utilizar excesivos elementos gráficos que dificultan la interpretación.
+
+&lt;img src="imagenes/3.PNG" width="70%" /&gt;
+
+]
+
+.panel[.panel-name[Datos errados 1]
+
+Forzar la interpretación de los datos a intereses particulares.
+
+
+&lt;img src="imagenes/4.PNG" width="90%" /&gt;
+]
+
+.panel[.panel-name[Datos errados 2]
+
+Forzar la interpretación de los datos a intereses particulares.
+
+
+&lt;img src="imagenes/5.PNG" width="80%" /&gt;
+]
+
+.panel[.panel-name[Problemas de percepción]
+
+La forma y el color que se elija pueden ser claves.
+
+
+&lt;img src="imagenes/6.PNG" width="95%" /&gt;
+]
+]
 
 ---
 
@@ -166,42 +309,549 @@ Se utilizará el paquete `ggplot2` y una serie de extensiones como:
 ]
 ]
 
+---
+# Capas básicas
+
+.pull-left[
+Un gráfico esta compuesto **mínimamente** por tres capas: 
+- Datos
+- Coordenadas
+- Geometría
+]
+
+.pull-right[
+&lt;img src="imagenes/ggplot2_capas_básicas.png" width="100%" /&gt;
+]
+
+---
+
+.panelset[
+.panel[.panel-name[Paso 0]
+
+### Paso 0. Cargar paquete 
+
+.font105[.line-space1-3[
+`Tidyverse` es un ecosistema de paquetes, entre los cuales se encuentra `ggplot2`]]
+
 
 ```r
-knitr::knit_exit()
+library(tidyverse)                
+```
+
+&lt;div&gt;
+&lt;p style = 'text-align:center;'&gt;
+&lt;img src="imagenes/tidyverse.jpg", width = "65%"&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+
+.panel[.panel-name[Paso 1]
+
+### Paso 1. Base de datos
+.font105[.line-space1-3[
+El primer argumento refiere a la data, en este caso trabajaremos con `iris`]]
+
+.pull-left[
+
+```r
+ggplot(data = iris) 
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 2]
+
+### Paso 2. Coordenadas 
+.font105[.line-space1-3[
+El segundo argumento son las coordenadas, para ello colocamos `aes`]]
+
+.pull-left[
+
+```r
+ggplot(data = iris,
+*      aes(x = Petal.Length,
+*          y = Sepal.Length))
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 3]
+
+### Paso 3. Geometrías
+.font105[.line-space1-3[
+El tercer argumento refiere a las geometrías, para ello agregamos una capa y colocamos `geom`]]
+
+.pull-left[
+
+```r
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length)) +
+*      geom_point()
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+]
+
+---
+class: inverse, center, middle
+# .font100[Una vez se cuenta con las 3 capas básicas, se puede agregar otras para personalizar más el gráfico]
+
+---
+
+class: inverse
+
+background-image:url(https://pbs.twimg.com/media/EQ-uBWcX0AIc_bs.png)
+background-size: cover     
+
+---
+
+.panelset[
+.panel[.panel-name[Paso 4]
+
+### Paso 4. Color (Parte de Estéticas)
+.font105[.line-space1-3[
+Con `aes`, además de las coordenadas, se puede colorear el gráfico. En este caso, coloreamos según **especies**
+]]
+.pull-left[
+
+```r
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length,
+*          colour = Species)) +
+       geom_point()
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 5]
+
+### Paso 5. Temas
+.font105[.line-space1-3[
+El cuarto argumento refiere a los temas o formatos de la gráfica, para ello agregamos una capa  y colocamos `theme`
+]]
+.pull-left[
+
+```r
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length,
+           colour = Species)) +
+       geom_point() +
+*      theme_classic()
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 6]
+
+### Paso 6. Etiquetas
+.font105[.line-space1-3[
+El quinto argumento refiere a las etiquetas, para ello agregamos una capa y colocamos `labs`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
+]]
+
+.pull-left[
+
+```r
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length,
+           colour = Species)) +
+       geom_point() +
+       theme_classic() +
+*      labs(
+*      title = "Distribución de las especies",
+*      subtitle = "Gráfica propia"
+*      caption  = "Avances en Medición Psicólogica"
+*      )
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+]
+
+---
+
+class: inverse, center, middle
+# .font150[HISTOGRAMA]
+
+---
+
+# HISTOGRAMA
+.font105[**Descripción general (Harris, 1999; Zedeck, 2013)**]
+
+.panelset[
+.panel[.panel-name[Definición]
+
+
+Representación gráfica de datos continuos mediante barras de altura variable, similar a un GRÁFICO DE BARRAS, pero con bloques en el eje X; contiguos entre sí para denotar su naturaleza continua.
+
+&lt;div&gt;
+&lt;p style = 'text-align:center;'&gt;
+&lt;img src = "https://lh3.googleusercontent.com/proxy/uCRx5QAbNk_Nge3CdH-SMQKU2PKoicbSEo-HneCKmvgMwt4mVY6e00Xy1ELK3rSu0yG9zTGxHjxt5TqGtOXEG7CRhdfW8mcrdijbCs9AwmZdRJjY5uHRt0e7VrHNS1LZOriJrkr_zScN64xSMzgRCMY3lNFlmKjH4uPSjXy3SfkJM5iqhn0fLHFMvxE" width="350px"&gt;
+
+]
+]
+
+.panel[.panel-name[Proceso 1]
+
+####1. Dado un conjunto de datos:
+
+&lt;img src="imagenes/Histo_1.PNG" width="100%" /&gt;
+]
+
+.panel[.panel-name[Proceso 2]
+
+####2. Los datos datos representados en una coordenada.
+
+&lt;img src="imagenes/Histo_2.PNG" width="100%" /&gt;
+]
+
+.panel[.panel-name[Proceso 3]
+
+####3. Se forman intervalos de clase con la misma amplitud y se contabilizan los datos de cada intervalo de clase.
+
+&lt;img src="imagenes/Histo_3.PNG" width="100%" /&gt;
+]
+
+.panel[.panel-name[Proceso 4]
+
+####4.	Introducción de columnas en cada uno de los intervalos de clase.
+
+&lt;img src="imagenes/Histo_4.PNG" width="100%" /&gt;
+
+]
+
+.panel[.panel-name[Intervalos de clase]
+
+Rango de puntuaciones o valores numéricos que constituyen un segmento o clase de una variable de interés. 
+
+####Amplitud de intervalo de clase, Regla de Sturges
+
+
+&lt;img src="imagenes/Histogram_1.PNG" width="120%" /&gt;
+- R = Rango, la diferencia entre el mayor y menor valor del conjunto de datos
+- k = número de intervalos de clase
+- N = número de valores en el conjunto de datos en observación
+
+]
+]
+
+---
+
+# HISTOGRAMA
+.font105[**Presentación básica de un histograma en R**]
+
+.panelset[
+.panel[.panel-name[Paso 1]
+
+#### 1. Cargar paquetes
+
+- `tidyverse` y `patchwork`
+
+
+```r
+library(tidyverse)
+library(patchwork)
+```
+
+
+```r
+library(pacman)
+pacman:p_load(tidyverse, patchwork)
 ```
 
 
 
+.panel[.panel-name[Paso 2]
+
+#### 2. Importar datos.
+
+.font105[
+
+```r
+data &lt;- read_csv(file = "data3_clean.csv")
+```
+
+
+```
+## # A tibble: 4 x 63
+##   sexo   convive escuela    edad  ase1  ase2  ase3  ase4  ase5  ase6  ase7  ase8
+##   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Mujer  Solo    "Ciencia~    18     2     2     2     1     2     2     2     1
+## 2 Mujer  Solo    "Vocaci\~    20     3     4     3     3     3     3     3     4
+## 3 Mujer  Solo    "Vocaci\~    20     3     3     4     4     4     4     4     4
+## 4 Hombre Con fa~ "Ciencia~    18     3     3     3     4     4     4     3     3
+## # ... with 51 more variables: ase9 &lt;dbl&gt;, ase10 &lt;dbl&gt;, ase11 &lt;dbl&gt;,
+## #   ase12 &lt;dbl&gt;, ase13 &lt;dbl&gt;, ase14 &lt;dbl&gt;, ase15 &lt;dbl&gt;, ase16 &lt;dbl&gt;,
+## #   ase17 &lt;dbl&gt;, ase18 &lt;dbl&gt;, ase19 &lt;dbl&gt;, ase20 &lt;dbl&gt;, ase21 &lt;dbl&gt;,
+## #   ase22 &lt;dbl&gt;, ase23 &lt;dbl&gt;, ase24 &lt;dbl&gt;, ase25 &lt;dbl&gt;, ase26 &lt;dbl&gt;,
+## #   ase27 &lt;dbl&gt;, ase28 &lt;dbl&gt;, ase29 &lt;dbl&gt;, ase30 &lt;dbl&gt;, ase31 &lt;dbl&gt;,
+## #   ase_total &lt;dbl&gt;, ase_cat &lt;chr&gt;, bur1 &lt;dbl&gt;, bur2 &lt;dbl&gt;, bur3 &lt;dbl&gt;,
+## #   bur4 &lt;dbl&gt;, bur5 &lt;dbl&gt;, bur6 &lt;dbl&gt;, bur7 &lt;dbl&gt;, bur8 &lt;dbl&gt;, bur9 &lt;dbl&gt;,
+## #   bur10 &lt;dbl&gt;, bur11 &lt;dbl&gt;, bur12 &lt;dbl&gt;, bur13 &lt;dbl&gt;, bur14 &lt;dbl&gt;,
+## #   bur15 &lt;dbl&gt;, bur16 &lt;dbl&gt;, bur17 &lt;dbl&gt;, bur18 &lt;dbl&gt;, bur19 &lt;dbl&gt;,
+## #   bur20 &lt;dbl&gt;, bur21 &lt;dbl&gt;, bur22 &lt;dbl&gt;, bur23 &lt;dbl&gt;, bur24 &lt;dbl&gt;,
+## #   bur_total &lt;dbl&gt;, bur_cat &lt;chr&gt;
+```
+]
+]
+
+
+.panel[.panel-name[Paso 3]
+
+#### 3. Cargar datos en ggplot.
+
+
+.pull-left[
+
+```r
+ggplot(data)
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-34-1.png" width="70%" /&gt;
+]
+
+]
+
+.panel[.panel-name[Paso 4]
+
+#### 4. Indicar la variable de análisis con aes.
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) 
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-36-1.png" width="70%" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 5]
+
+#### 5. Señalar que se trabajará con un gráfico de histograma.
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram()
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-38-1.png" width="70%" /&gt;
+]
+
+]
+]
+]
+
+
+---
+# HISTOGRAMA
+.font105[**Personalización de un histograma**]
+
+.panelset[
+.panel[.panel-name[Paso 6]
+
+#### 6. Amplitud de intervalo utilizando la regla de Sturges `function(x) (max(x)-min(x))/nclass.Sturges(x)`.
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = 7))
+```
+
+
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x))
+```
+
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-41-1.png" width="70%" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 7]
+
+####7. Color y relleno.
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue")
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-43-1.png" width="70%" /&gt;
+]
+]
+
+
+
+.panel[.panel-name[Paso 8]
+
+#### 8. Tema.
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") +
+  theme_classic()
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-45-1.png" width="70%" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 9]
+
+#### 9. Anotaciones `labs`.
+
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica",
+    subtitle = "Base de datos de Rohmani &amp; Andriani (2021)",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  theme_classic()
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-47-1.png" width="70%" /&gt;
+]
+
+]
+
+.panel[.panel-name[Paso 10]
+
+#### 10. Utilizar facet_wrap para visualizar los resultados según un tipo de variable categórica.
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica según el sexo",
+    subtitle = "Base de datos de Rohmani &amp; Andriani (2021)",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  facet_wrap(vars(sexo)) + 
+  theme_classic()
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-49-1.png" width="70%" /&gt;
+]
+]
+]
+
+---
 
 
 
 
+```r
+countdown(minutes = 10, seconds = 10, play_sound = TRUE)
+```
 
+<div class="countdown" id="timer_61b6eccc" style="right:0;bottom:0;" data-audio="true" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">10</span></code>
+</div>
 
+---
+class: inverse, center, middle
+# .font100[Diagrama de cajas y bigotes]
 
+---
 
+## Bibliografía
 
+- Cairo, A. (2016). The Truthful Art: Data, Charts, and Maps for Communication.
 
+- Harris, R. L. (1999). Information Graphics. A Comprehensive Illustrated Reference. Visual Tools for Analyzing, Managing, and Communicating. Oxford University Press.
 
+- Healy, K. (2019). Data Visualization: A Practical Introduction. In IEEE Transactions on Professional Communication.
+https://doi.org/10.1109/TPC.2019.2922787
 
+- Zedeck, S. (Ed.). (2013). APA Dictionary of Statistics and Research Methods. American Psychological Association.
 
+---
 
+class: middle
 
+&lt;br&gt;
+&lt;center&gt;
+&lt;h1&gt;
+&lt;span style="color:black"&gt;¡Gracias por su atención!&lt;/span&gt;
+&lt;h1&gt;
+&lt;/center&gt;
+&lt;br&gt;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.line-space1-5[
+Estas diapositivas fueron creadas mediante los paquetes [xaringan](https://github.com/yihui/xaringan),  [xaringanthemer](https://github.com/gadenbuie/xaringanthemer/) y
+[xaringanExtra](https://github.com/gadenbuie/xaringanExtra). Adicionalmente, la presentación de [Brian Peña](https://github.com/brianmsm), sobre [Rmarkdown Nivel Básico](https://github.com/brianmsm/rmakdown-basico), fue tomada como guía-base para esta elaboración.
+]
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
