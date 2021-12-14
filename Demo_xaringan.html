@@ -10,7 +10,7 @@
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"ad4a2a09baec47488605b39a48810368","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"a956e00704f843e5a717682836a8d7c0","expires":1}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -140,8 +140,8 @@ class: inverse, center, middle
 .font105[.line-space1-5[
 La base de datos (data) fue extraida de una investigación que tenía por objetivo correlacionar las variables `Autoeficacia Académica (AA)` y el `Burnout (B)` en estudiantes de enfermería ]]
 
-<div id="htmlwidget-15931c18b1042025576c" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-15931c18b1042025576c">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11"],["Muestra","Sexo","Edad","Convivencia","Escuela","Escala de Autoeficacia Academica","Escala de Burnout","Puntaje total de Autoeficacia Academica","Puntaje total de Burnout","Puntaje categorizado de Autoeficacia Academica","Puntaje categorizado de Burnout"],["69","Hombre; Mujer","17; 23","Solo; Con familia","Ciencias; Ciencias sociales; Vocación salud","ase1; ase31","bur1; bur24","44; 144","10; 125","bajo; moderado; alto","leve; moderado; severo"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Variable<\/th>\n      <th>Descripcion<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-deaabd89f75f73c2de20" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-deaabd89f75f73c2de20">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11"],["Muestra","Sexo","Edad","Convivencia","Escuela","Escala de Autoeficacia Academica","Escala de Burnout","Puntaje total de Autoeficacia Academica","Puntaje total de Burnout","Puntaje categorizado de Autoeficacia Academica","Puntaje categorizado de Burnout"],["69","Hombre; Mujer","17; 23","Solo; Con familia","Ciencias; Ciencias sociales; Vocación salud","ase1; ase31","bur1; bur24","44; 144","10; 125","bajo; moderado; alto","leve; moderado; severo"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Variable<\/th>\n      <th>Descripcion<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -515,48 +515,240 @@ class: inverse, center, middle
 .pull-left[
 1. Realice un gráfico de barras teniendo en cuenta las variables **bur_total** y **sexo**. 
 2. Realice un gráfico con las variables **convive** y **bur_total**. 
-]]
+]
 
 .pull-right[
 &lt;img src="imagenes/perrito.jpg" width="100%" /&gt;
 ]
 
+---
+class: inverse, center, middle
+# .font100[GRÁFICO DE BARRAS CON geom_col Y geom_bar]
 
 ---
 
-
-
-
-
-# Cuerpo: Ejemplo de diferentes secciones dentro de una diapositiva
-.font105[Prueba de integración del lenguaje **javascript**]
-
 .panelset[
-.panel[.panel-name[Sección 1]
+.panel[.panel-name[Paso 1]
 
-#### 1. Título 1
+#### 1. Conteo de variables
+
+.font105[.line-space1-5[
+Para utilizar **geom_col** primero realizaremos el conteo de la variable que luego será graficada. Para ello se utilizaran las funciones `count()`, `mutate()` y `factor()`. 
+]]
+
+.pull-left[
+
+```r
+data %&gt;%                             
+* count(ase_cat) %&gt;%
+* mutate(
+*   ase_cat = factor(ase_cat),
+*         n = factor(n)
+* )
+```
+]
+
+.pull-right[
 
 ```
-&lt;img src="https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png" width="300px"/&gt;
+## # A tibble: 3 x 2
+##   ase_cat  n    
+##   &lt;fct&gt;    &lt;fct&gt;
+## 1 Alto     10   
+## 2 Bajo     9    
+## 3 Moderado 50
 ```
+]
 
 ]
 
-.panel[.panel-name[Sección 1]
+.panel[.panel-name[Paso 2]
 
-#### 2. Título 2
+#### 2. Coordenadas
 
+.font105[.line-space1-5[
+En el segundo argumento que se refiere a las coordenadas, con `aes`, señalaremos el contenido del eje horizontal (x) y vertical (y)
+]]
 
-````
-```{r, echo=FALSE, , out.width = '30%'}
-knitr::include_graphics('https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png', 
-      dpi = 600) 
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+* ggplot(aes(y = n,
+*            x = ase_cat))
 ```
-````
+]
 
-#### HOLA MUNDO
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-30-1.png" width="504" /&gt;
+]
 
 ]
+
+.panel[.panel-name[Paso 3]
+
+#### 3. Geometrías
+
+.font105[.line-space1-5[
+El tercer argumento refiere a las geometrías, para ello agregamos una capa **(con el símbolo +) ** y colocamos `geom`
+]]
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n,            
+             x = ase_cat)) +   
+* geom_col()
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-32-1.png" width="504" /&gt;
+]
+
+]
+
+.panel[.panel-name[Paso 4]
+
+#### 4. Colores del gráfico
+
+.font105[.line-space1-5[
+Con `aes`, además de las coordenadas, se puede colorear el gráfico. Para ello agregaremos el argumento `fill` y en este caso, coloreamos según **ase_cat**
+]]
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n,               
+             x = ase_cat,         
+*         fill = ase_cat)) +
+  geom_col()
+```
+]
+
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-34-1.png" width="504" /&gt;
+]
+
+]
+
+.panel[.panel-name[Paso 5]
+
+#### 5. Temas
+
+.font105[.line-space1-5[
+El cuarto argumento refiere a los temas o formatos de la gráfica, para ello agregamos una capa  y colocamos `theme`
+]]
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n,            
+             x = ase_cat,      
+          fill = ase_cat)) +   
+  geom_col() +
+* theme_bw()
+```
+]
+
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-36-1.png)&lt;!-- --&gt;
+]
+
+]
+
+.panel[.panel-name[Paso 6]
+
+#### 6. Etiquetas en la barra
+
+.font105[.line-space1-5[
+Este argumento es para personalizar el gráfico y será útil para denotar la altura de la barra, para ello agregamos una capa y colocamos `geom_label()`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
+]]
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;%                         
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n, 
+             x = ase_cat,
+          fill = ase_cat)) +
+  geom_col() + 
+  theme_bw() +
+* geom_label(aes(label = n),
+* position = position_stack(vjust = 0.5))
+```
+]
+
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-38-1.png)&lt;!-- --&gt;
+]
+]
+
+.panel[.panel-name[Paso 7]
+
+#### 7. Etiquetas en el gráfico
+
+.font105[.line-space1-5[
+El quinto argumento refiere a las etiquetas, para ello agregamos una capa y colocamos `labs`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
+]]
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n, 
+             x = ase_cat,
+          fill = ase_cat)) +
+  geom_col() + 
+  theme_bw() +
+  geom_label(aes(label = n),                         
+             position = position_stack(vjust = 0.5)) +
+* labs(
+* title = "Nivel de ansiedad",
+* subtitle = "Gráfica propia",
+* caption = "Avances en Medición Psicológica")
+```
+]
+
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-40-1.png)&lt;!-- --&gt;
+]
+
+]
+
 ]
 
 ---
