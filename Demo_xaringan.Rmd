@@ -136,14 +136,16 @@ El gráfico fue extraido de la investigación **The real life impact of vaccinat
 # .font100[Diferencias entre geom_bar y geom_col]
 
 .pull-left[
-**geom_bar**
-La imagen puede apreciarse de forma más detallada en el siguiente link (https://ars.els-cdn.com/content/
+**geom_bar()** hace que la altura de la barra sea proporcional al número de casos en cada grupo (o si se suministra la estética del peso, la suma de los pesos). Utiliza stat_count() por defecto, cuenta el número de casos en cada posición x.
 ]
 
 .pull-right[
-**geom_col**
-La imagen puede apreciarse de forma más detallada en el siguiente link (https://ars.els-cdn.com/content/
+**geom_col** hace que la altura de la barra represente el valor de los datos. Así mismo utiliza stat_identity() por lo que deja los datos como están.
 ]
+
+.pull-right[A pesar de que se pueden usar diferentes funciones, las gráficas no varían en su diseño
+]
+
 
 ---
 
