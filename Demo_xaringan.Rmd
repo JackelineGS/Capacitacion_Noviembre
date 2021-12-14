@@ -277,6 +277,39 @@ ggplot(data = iris,
 
 ---
 class: inverse, center, middle
+# .font100[PRESENTACIÓN DE LA BASE DE DATOS]
+
+---
+
+# .font100[Caracteristicas]
+
+.font105[.line-space1-5[
+La base de datos fue extraida de una investigación que consistía en una correlación entre la `Autoeficacia Académica (AA)` y el `Burnout (B)` originado por el aprendizaje a distancia en estudiantes de enfermería ]]
+
+.pull-right[
+`Muestra`          = 69 estudiantes
+`Sexo`             = Hombre, Mujer
+`Edad`             = 17-23 años
+
+]
+.pull-right[
+`Convivencia`      = Solo, Con familia
+`Escuela`          = Science, Social Science, Health Vocation, Non-health vocat
+`Escala de AA`     = ase1:ase31
+]
+
+.pull-left[
+
+`Escala de B`        = bur1:bur24
+`Puntaje total (AA)` = de 44 a 114 
+`Puntaje total (B)`  = de 10 a 125
+`Puntaje categorizado (AA)` = bajo, moderado, alto
+`Puntaje categorizado (B)`  = leve, moderado, severo
+]
+
+---
+
+class: inverse, center, middle
 # .font100[GRÁFICO DE BARRAS]
 
 ---
@@ -302,10 +335,21 @@ knitr::include_graphics("imagenes/articulo_barras.jpg", dpi = 500)
 El gráfico fue extraido de la investigación **The real life impact of vaccination on COVID-19 mortality in Europe and Israel** (https://doi.org/10.1016/j.puhe.2021.07.037). 
 ]
 
-
 ---
 
+# .font100[Diferencias entre geom_bar y geom_col]
 
+.pull-left[
+**geom_bar**
+La imagen puede apreciarse de forma más detallada en el siguiente link (https://ars.els-cdn.com/content/
+]
+
+.pull-right[
+**geom_col**
+La imagen puede apreciarse de forma más detallada en el siguiente link (https://ars.els-cdn.com/content/
+]
+
+---
 
 # Paso 1. Conteo de la variable
 .font105[.line-space1-5[
