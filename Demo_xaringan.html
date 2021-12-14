@@ -10,7 +10,7 @@
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xc39079bc60c47769f78210e9e321b90","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x98ff216f49f42edb94cd280e8e09a9b","expires":1}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -140,8 +140,8 @@ class: inverse, center, middle
 .font105[.line-space1-5[
 La base de datos (data) fue extraida de una investigación que tenía por objetivo correlacionar las variables `Autoeficacia Académica (AA)` y el `Burnout (B)` en estudiantes de enfermería ]]
 
-<div id="htmlwidget-ea515cf4501c38242508" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ea515cf4501c38242508">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11"],["Muestra","Sexo","Edad","Convivencia","Escuela","Escala de Autoeficacia Academica","Escala de Burnout","Puntaje total de Autoeficacia Academica","Puntaje total de Burnout","Puntaje categorizado de Autoeficacia Academica","Puntaje categorizado de Burnout"],["69","Hombre; Mujer","17; 23","Solo; Con familia","Ciencias; Ciencias sociales; Vocación salud","ase1; ase31","bur1; bur24","44; 144","10; 125","bajo; moderado; alto","leve; moderado; severo"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Variable<\/th>\n      <th>Descripcion<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8ad7da564cf5809e8dba" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8ad7da564cf5809e8dba">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11"],["Muestra","Sexo","Edad","Convivencia","Escuela","Escala de Autoeficacia Academica","Escala de Burnout","Puntaje total de Autoeficacia Academica","Puntaje total de Burnout","Puntaje categorizado de Autoeficacia Academica","Puntaje categorizado de Burnout"],["69","Hombre; Mujer","17; 23","Solo; Con familia","Ciencias; Ciencias sociales; Vocación salud","ase1; ase31","bur1; bur24","44; 144","10; 125","bajo; moderado; alto","leve; moderado; severo"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Variable<\/th>\n      <th>Descripcion<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -199,7 +199,7 @@ class: inverse, center, middle
 #### 1. Coordenadas
 
 .font105[.line-space1-5[
-Para utilizar **geom_bar** primero definiremos que variable categórica queremos gráficar, la cual ubicaremos en el eje "y" o en el eje "x". Al igual que en la gráfica anterior utilizaremos la variable categórica `ase_cat`
+Al usar la función `%&gt;%` lo primero que colocaremos antes de crear cualquier código es la base de datos que en este caso se llama `data`. Posteriormente incluiremos la función **ggplot()** la cual crea el sistema de coordenadas y especifica las coordenadas con `aes`. Para la gráfica en el eje "x" utilizaremos la variable categórica `ase_cat`
 ]]
 
 .pull-left[
@@ -220,7 +220,7 @@ data %&gt;%
 #### 2. Geometrías
 
 .font105[.line-space1-5[
-Luego de definir la variable categórica `ase_cat` que se va a gráficar se debe definir la geométria a utilizar, que este caso será **geom_bar**
+Luego de especificar las coordenadas del gráfico definimos la geométria a utilizar, para ello agregaremos una capa **(con el símbolo +) ** y utilizaremos la geometría **geom_bar**
 ]]
 
 .pull-left[
@@ -242,7 +242,7 @@ data %&gt;%
 #### 3. Colores
 
 .font105[.line-space1-5[
-Después de tener el gráfico, podemos definir el color de los bordes de la barra y su relleno. Para ello utilizaremos `colour` y `fill`
+Si bien `aes` permite definir las coordenadas del gráfico, también permite incluir funciones para personalizar el gráfico. Incluyendo el argumento `colour` podemos colorear los bordes de la barra e incluyendo el argumento `fill` podemos especificar un color para el relleno del gráfico.
 
 ]]
 
@@ -267,7 +267,7 @@ data %&gt;%
 #### 4. Tema
 
 .font105[.line-space1-5[
-A continuación le agregamos un tema, el cual le da un formato al fondo de la gráfica. 
+El **tema** es un argumento que le da un formato al fondo y el marco de la gráfica. 
 
 ]]
 
@@ -293,7 +293,7 @@ data %&gt;%
 #### 5. Etiquetas del gráfico
 
 .font105[.line-space1-5[
-Al terminar el gráfico se pueden colocar titulos subtitulos y nombres para cada eje.
+Al culminar el gráfico se pueden colocar titulos, subtitulos y leyenda.
 
 ]]
 
@@ -365,7 +365,7 @@ data %&gt;%
 #### 2. Coordenadas
 
 .font105[.line-space1-5[
-En el segundo argumento que se refiere a las coordenadas, con `aes`, señalaremos el contenido del eje horizontal (x) y vertical (y)
+Con el argumento `aes`, señalaremos el contenido del eje horizontal (x) y vertical (y)
 ]]
 
 .pull-left[
@@ -394,8 +394,9 @@ data %&gt;%
 #### 3. Geometrías
 
 .font105[.line-space1-5[
-El tercer argumento refiere a las geometrías, para ello agregamos una capa **(con el símbolo +) ** y colocamos `geom`
+Agregamos una capa **(con el símbolo +)** para agregar el argumento de la geometría **geom_col**.
 ]]
+
 .pull-left[
 
 ```r
@@ -414,7 +415,6 @@ data %&gt;%
 .pull-right[
 &lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-23-1.png" width="504" /&gt;
 ]
-
 ]
 
 
@@ -423,7 +423,7 @@ data %&gt;%
 #### 4. Colores del gráfico
 
 .font105[.line-space1-5[
-Con `aes`, además de las coordenadas, se puede colorear el gráfico. Para ello agregaremos el argumento `fill` y en este caso, coloreamos según **ase_cat**
+Dentro de la función de `aes` agregaremos el argumento `fill` y en este caso, coloreamos según **ase_cat**
 ]]
 .pull-left[
 
@@ -445,7 +445,6 @@ data %&gt;%
 .pull-right[
 &lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-25-1.png" width="504" /&gt;
 ]
-
 ]
 
 .panel[.panel-name[Paso 4B]
@@ -453,8 +452,9 @@ data %&gt;%
 #### 4.1 Colores del gráfico
 
 .font105[.line-space1-5[
-En este caso colorearemos el gráfico según la variable **sexo**
+También podemos colorearemos el gráfico según otra variable categórica, por ejemplo según la variable **sexo**.
 ]]
+
 .pull-left[
 
 ```r
@@ -465,9 +465,9 @@ data %&gt;%
           sexo = factor(sexo)   
   ) %&gt;% 
   ggplot(aes(y = n,             
-             x = ase_cat,       
-             fill = sexo)) +
-* geom_col()
+             x = ase_cat,          
+*            fill = sexo)) +
+  geom_col()                          
 ```
 ]
 
@@ -476,7 +476,6 @@ data %&gt;%
 &lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-27-1.png" width="504" /&gt;
 ]
 ]
-
 
 .panel[.panel-name[Paso 5]
 
@@ -498,7 +497,7 @@ data %&gt;%
              x = ase_cat,      
           fill = ase_cat)) +   
   geom_col() +
-* theme_bw()
+* theme_minimal()
 ```
 ]
 
@@ -506,7 +505,6 @@ data %&gt;%
 .pull-right[
 ![](Demo_xaringan_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
 ]
-
 ]
 
 .panel[.panel-name[Paso 6]
@@ -514,7 +512,7 @@ data %&gt;%
 #### 6. Etiquetas en la barra
 
 .font105[.line-space1-5[
-Este argumento es para personalizar el gráfico y será útil para denotar la altura de la barra, para ello agregamos una capa y colocamos `geom_label()`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
+Las etiquetas en la barra permiten denotar la altura de la barra. Para incluir las etiquetas agregamos el argumento `geom_label()`. En ella especificaremos el contenido de la etiqueta.
 ]]
 .pull-left[
 
@@ -529,7 +527,7 @@ data %&gt;%
              x = ase_cat,
           fill = ase_cat)) +
   geom_col() + 
-  theme_bw() +
+  theme_minimal() +
 * geom_label(aes(label = n),
 * position = position_stack(vjust = 0.5))
 ```
@@ -546,7 +544,7 @@ data %&gt;%
 #### 7. Etiquetas en el gráfico
 
 .font105[.line-space1-5[
-El quinto argumento refiere a las etiquetas, para ello agregamos una capa y colocamos `labs`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
+Este argumento permite agregar etiquetas como el titulo, el subtitulo y la leyenda. Para ello utilizaremos el argumento `labs` con la cual especificaremos el contenido de cada etiqueta.
 ]]
 .pull-left[
 
@@ -561,7 +559,7 @@ data %&gt;%
              x = ase_cat,
           fill = ase_cat)) +
   geom_col() + 
-  theme_bw() +
+  theme_minimal() +
   geom_label(aes(label = n),                         
              position = position_stack(vjust = 0.5)) +
 * labs(
