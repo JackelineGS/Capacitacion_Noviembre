@@ -10,7 +10,7 @@
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xee143c052a94e969c751f4e84afeb94","expires":14}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xc0ad8923e6a4ba3b12e4dc1ecbf7e42","expires":14}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -25,6 +25,15 @@
     <script>window.xaringanExtraClipboard(null, {"button":"Copiar","success":"Copiado","error":"Presiona Ctrl+C para copiar"})</script>
     <script src="libs/xaringanExtra_fit-screen/fit-screen.js"></script>
     <link href="libs/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/jquery/jquery.min.js"></script>
+    <link href="libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding/datatables.js"></script>
+    <link href="libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core/js/jquery.dataTables.min.js"></script>
+    <link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk/js/crosstalk.min.js"></script>
     <link href="libs/countdown/countdown.css" rel="stylesheet" />
     <script src="libs/countdown/countdown.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
@@ -43,10 +52,7 @@ class: center, middle, inverse, title-slide
 
 
 class: inverse, center, middle
-
-.can-edit[
-# .font150[Cómo construir gráficos con ggplot2]
-]
+# .font150[TEMARIO]
 
 
 
@@ -88,7 +94,33 @@ top:1em;right:1em;
 
 ---
 
-# ¿Qué es la visualización de datos?
+# Temario
+
+1. VISUALIZACIÓN DE DATOS 
+ * Definición
+ * Importancia
+ * Visualización de datos con R
+ 
+2. GRAMÁTICA DE GRÁFICOS
+ * Capas básicas
+ * Capas de personalización
+ 
+3. ILUSTRACIÓN
+ * Base de datos
+ * Gráfico de barras
+ * Histograma
+ * Diagrama de cajas y bigotes
+ 
+4. PRÁCTICA
+
+---
+
+class: inverse, center, middle
+# .font150[VISUALIZACIÓN DE DATOS]
+
+---
+
+## ¿Qué es la visualización de datos?
 .font105[Algunas **definiciones** (Cairo, 2016).]
 
 .panelset[
@@ -104,7 +136,7 @@ top:1em;right:1em;
 .pull-right[
 &lt;div&gt;
 &lt;p style = 'text-align:center;'&gt;
-&lt;img src = "https://loquenadietedice.com/wp-content/uploads/2017/09/hombre-visualizando.jpg" width="350px"&gt;
+&lt;img src = "https://annabaa.org/aarticles/fileM/23/6134585fad648.jpg" width="350px"&gt;
 
 ]
 ]
@@ -310,6 +342,18 @@ Se utilizará el paquete `ggplot2` y una serie de extensiones como:
 ]
 
 ---
+class: inverse, center, middle
+# .font150[GRAMÁTICA DE GRÁFICOS]
+
+---
+
+class: inverse
+
+background-image:url(https://pbs.twimg.com/media/EQ-uBWcX0AIc_bs.png)
+background-size: cover   
+
+---
+
 # Capas básicas
 
 .pull-left[
@@ -409,14 +453,7 @@ ggplot(data = iris,
 
 ---
 class: inverse, center, middle
-# .font100[Una vez se cuenta con las 3 capas básicas, se puede agregar otras para personalizar más el gráfico]
-
----
-
-class: inverse
-
-background-image:url(https://pbs.twimg.com/media/EQ-uBWcX0AIc_bs.png)
-background-size: cover     
+# .font50[Una vez se cuenta con las 3 capas básicas, se puede agregar otras para personalizar más el gráfico]
 
 ---
 
@@ -497,9 +534,456 @@ ggplot(data = iris,
 ]
 
 ---
+class: inverse, center, middle
+# .font150[ILUSTRACIÓN]
+
+---
+# .font100[Características de la base de datos]
+
+.font105[.line-space1-5[
+La base de datos (data) fue extraida de una investigación que tenía por objetivo correlacionar las variables `Autoeficacia Académica (AA)` y el `Burnout (B)` en estudiantes de enfermería ]]
+
+<div id="htmlwidget-2afcd36209e52cdcc371" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2afcd36209e52cdcc371">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],["Muestra","Sexo","Edad","Convivencia","Escuela","Escala de Autoeficacia Academica","Escala de Burnout","Puntaje total de Autoeficacia Academica","Puntaje total de Burnout","Puntaje categorizado de Autoeficacia Academica","Puntaje categorizado de Burnout"],["69","Hombre; Mujer","17; 23","Solo; Con familia","Ciencias; Ciencias sociales; Vocación salud","ase1; ase31","bur1; bur24","44; 144","10; 125","bajo; moderado; alto","leve; moderado; severo"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Variable<\/th>\n      <th>Descripcion<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+
+---
 
 class: inverse, center, middle
-# .font150[HISTOGRAMA]
+# .font150[Gráfico de barras]
+
+---
+# .font100[Definición]
+
+
+.pull-left[
+Los gráficos de barras permiten resumir un conjunto de datos según una **categoría** por ejemplo según fechas, sexo, países, regiones, entre otros. 
+
+La figura muestra las proporciones medias de `variantes de COVID-19` en los distintos países entre enero de 2020 y abril de 2021. 
+
+La imagen puede apreciarse de forma más detallada en el siguiente link (https://ars.els-cdn.com/content/image/1-s2.0-S0033350621003073-gr1.jpg)
+]
+
+
+.pull-right[
+&lt;img src="imagenes/articulo_barras.jpg" width="100%" /&gt;
+]
+
+.pull-right[
+El gráfico fue extraido de la investigación **The real life impact of vaccination on COVID-19 mortality in Europe and Israel** (https://doi.org/10.1016/j.puhe.2021.07.037). 
+]
+
+---
+class: inverse, center, middle
+# .font100[Diferencias entre geom_bar() y geom_col()]
+
+---
+.pull-left[
+**geom_bar()** hace que la altura de la barra sea proporcional al número de casos en cada grupo (o si se suministra la estética del peso, la suma de los pesos). Utiliza stat_count() por defecto, cuenta el número de casos en cada posición x.
+
+![](Demo_xaringan_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
+
+]
+
+.pull-right[
+**geom_col** hace que la altura de la barra represente el valor de los datos. Así mismo utiliza stat_identity() por lo que deja los datos como están. Siendo necesario agregar la función count() para hallar la cantidad de casos para cada barra. 
+
+![](Demo_xaringan_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
+]
+
+---
+
+class: inverse, center, middle
+# .font100[Gráfico de barras con geom_bar()]
+---
+
+.panelset[
+.panel[.panel-name[Paso 1]
+
+#### 1. Coordenadas
+
+.font105[.line-space1-5[
+Al usar la función `%&gt;%` lo primero que colocaremos antes de crear cualquier código es la base de datos que en este caso se llama `data`. Posteriormente incluiremos la función **ggplot()** la cual crea el sistema de coordenadas y especifica las coordenadas con `aes`. Para la gráfica en el eje "x" utilizaremos la variable categórica `ase_cat`
+]]
+
+.pull-left[
+
+```r
+data %&gt;%                             
+* ggplot(aes(x = ase_cat))
+```
+]
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
+]
+]
+
+.panel[.panel-name[Paso 2]
+
+#### 2. Geometrías
+
+.font105[.line-space1-5[
+Luego de especificar las coordenadas del gráfico definimos la geométria a utilizar, para ello agregaremos una capa **(con el símbolo +) ** y utilizaremos la geometría **geom_bar**
+]]
+
+.pull-left[
+
+```r
+data %&gt;%                             
+  ggplot(aes(x = ase_cat)) +  
+* geom_bar()
+```
+]
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
+]
+]
+
+.panel[.panel-name[Paso 3]
+
+#### 3. Colores
+
+.font105[.line-space1-5[
+Si bien `aes` permite definir las coordenadas del gráfico, también permite incluir funciones para personalizar el gráfico. Incluyendo el argumento `colour` podemos colorear los bordes de la barra e incluyendo el argumento `fill` podemos especificar un color para el relleno del gráfico.
+
+]]
+
+.pull-left[
+
+```r
+data %&gt;% 
+  ggplot(aes(x = ase_cat)) + 
+* geom_bar(colour = "black",
+*          fill = "grey")
+```
+]
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-33-1.png)&lt;!-- --&gt;
+
+]
+]
+
+.panel[.panel-name[Paso 4]
+
+#### 4. Tema
+
+.font105[.line-space1-5[
+El **tema** es un argumento que le da un formato al fondo y el marco de la gráfica. 
+
+]]
+
+.pull-left[
+
+```r
+data %&gt;% 
+  ggplot(aes(x = ase_cat)) + 
+  geom_bar(colour = "black",     
+           fill = "grey") + 
+* theme_bw()
+```
+]
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-35-1.png)&lt;!-- --&gt;
+
+]
+]
+
+.panel[.panel-name[Paso 5]
+
+#### 5. Etiquetas del gráfico
+
+.font105[.line-space1-5[
+Al culminar el gráfico se pueden colocar titulos, subtitulos y leyenda.
+
+]]
+
+.pull-left[
+
+```r
+data %&gt;% 
+  ggplot(aes(x = ase_cat)) + 
+  geom_bar(colour = "black",
+           fill = "grey") +
+  theme_bw() + 
+* labs(
+*   title = "Nivel de ansiedad",
+*   subtitle = "Gráfica propia",
+*   caption = "Avances en Medición Psicológica")
+```
+]
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
+
+]
+] 
+] 
+
+---
+class: inverse, center, middle
+# .font100[Gráfico de barras con geom_col()]
+
+---
+
+.panelset[
+.panel[.panel-name[Paso 1]
+
+#### 1. Conteo de variables
+
+.font105[.line-space1-5[
+Para utilizar **geom_col** primero realizaremos el conteo de la variable que luego será graficada. Para ello se utilizaran las funciones `count()`, `mutate()` y `factor()`. 
+]]
+
+.pull-left[
+
+```r
+data %&gt;%                             
+* count(ase_cat) %&gt;%
+* mutate(
+*   ase_cat = factor(ase_cat),
+*         n = factor(n)
+* )
+```
+]
+
+.pull-right[
+
+```
+## # A tibble: 3 x 2
+##   ase_cat  n    
+##   &lt;fct&gt;    &lt;fct&gt;
+## 1 Alto     10   
+## 2 Bajo     9    
+## 3 Moderado 50
+```
+]
+
+]
+
+.panel[.panel-name[Paso 2]
+
+#### 2. Coordenadas
+
+.font105[.line-space1-5[
+Con el argumento `aes`, señalaremos el contenido del eje horizontal (x) y vertical (y)
+]]
+
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+* ggplot(aes(y = n,
+*            x = ase_cat))
+```
+]
+
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-41-1.png" width="504" /&gt;
+]
+
+]
+
+.panel[.panel-name[Paso 3]
+
+#### 3. Geometrías
+
+.font105[.line-space1-5[
+Agregamos una capa **(con el símbolo +)** para agregar el argumento de la geometría **geom_col**.
+]]
+
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n,            
+             x = ase_cat)) +   
+* geom_col()
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-43-1.png" width="504" /&gt;
+]
+]
+
+
+.panel[.panel-name[Paso 4A]
+
+#### 4. Colores del gráfico
+
+.font105[.line-space1-5[
+Dentro de la función de `aes` agregaremos el argumento `fill` y en este caso, coloreamos según **ase_cat**
+]]
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n,               
+             x = ase_cat,         
+*         fill = ase_cat)) +
+  geom_col()
+```
+]
+
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-45-1.png" width="504" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 4B]
+
+#### 4.1 Colores del gráfico
+
+.font105[.line-space1-5[
+También podemos colorearemos el gráfico según otra variable categórica, por ejemplo según la variable **sexo**.
+]]
+
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat, sexo) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),  
+          sexo = factor(sexo)   
+  ) %&gt;% 
+  ggplot(aes(y = n,             
+             x = ase_cat,          
+*            fill = sexo)) +
+  geom_col()                          
+```
+]
+
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-47-1.png" width="504" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 5]
+
+#### 5. Temas
+
+.font105[.line-space1-5[
+Los temas permiten establecer un fondo a la gráfica, para ello agregamos una capa  y colocamos `theme`
+]]
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n,            
+             x = ase_cat,      
+          fill = ase_cat)) +   
+  geom_col() +
+* theme_minimal()
+```
+]
+
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-49-1.png)&lt;!-- --&gt;
+]
+]
+
+.panel[.panel-name[Paso 6]
+
+#### 6. Etiquetas en la barra
+
+.font105[.line-space1-5[
+Las etiquetas en la barra permiten denotar la altura de la barra. Para incluir las etiquetas agregamos el argumento `geom_label()`. En ella especificaremos el contenido de la etiqueta.
+]]
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;%                         
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n, 
+             x = ase_cat,
+          fill = ase_cat)) +
+  geom_col() + 
+  theme_minimal() +
+* geom_label(aes(label = n),
+* position = position_stack(vjust = 0.5))
+```
+]
+
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-51-1.png)&lt;!-- --&gt;
+]
+]
+
+.panel[.panel-name[Paso 7]
+
+#### 7. Etiquetas en el gráfico
+
+.font105[.line-space1-5[
+Este argumento permite agregar etiquetas como el titulo, el subtitulo y la leyenda. Para ello utilizaremos el argumento `labs` con la cual especificaremos el contenido de cada etiqueta.
+]]
+.pull-left[
+
+```r
+data %&gt;% 
+  count(ase_cat) %&gt;% 
+  mutate(
+    ase_cat = factor(ase_cat),
+          n = factor(n)
+  ) %&gt;% 
+  ggplot(aes(y = n, 
+             x = ase_cat,
+          fill = ase_cat)) +
+  geom_col() + 
+  theme_minimal() +
+  geom_label(aes(label = n),                         
+             position = position_stack(vjust = 0.5)) +
+* labs(
+* title = "Nivel de ansiedad",
+* subtitle = "Gráfica propia",
+* caption = "Avances en Medición Psicológica")
+```
+]
+
+
+.pull-right[
+![](Demo_xaringan_files/figure-html/unnamed-chunk-53-1.png)&lt;!-- --&gt;
+]
+]
+]
+
+
+---
+
+class: inverse, center, middle
+# .font100[Histograma]
 
 ---
 
@@ -514,8 +998,7 @@ Representación gráfica de datos continuos mediante barras de altura variable, 
 
 &lt;div&gt;
 &lt;p style = 'text-align:center;'&gt;
-&lt;img src = "https://lh3.googleusercontent.com/proxy/uCRx5QAbNk_Nge3CdH-SMQKU2PKoicbSEo-HneCKmvgMwt4mVY6e00Xy1ELK3rSu0yG9zTGxHjxt5TqGtOXEG7CRhdfW8mcrdijbCs9AwmZdRJjY5uHRt0e7VrHNS1LZOriJrkr_zScN64xSMzgRCMY3lNFlmKjH4uPSjXy3SfkJM5iqhn0fLHFMvxE" width="350px"&gt;
-
+&lt;img src="imagenes/0.5.0.png" width="43%" /&gt;
 ]
 ]
 
@@ -581,14 +1064,6 @@ library(tidyverse)
 library(patchwork)
 ```
 
-
-```r
-library(pacman)
-pacman:p_load(tidyverse, patchwork)
-```
-
-
-
 .panel[.panel-name[Paso 2]
 
 #### 2. Importar datos.
@@ -598,36 +1073,12 @@ pacman:p_load(tidyverse, patchwork)
 ```r
 data &lt;- read_csv(file = "data3_clean.csv")
 ```
-
-
-```
-## # A tibble: 4 x 63
-##   sexo   convive escuela    edad  ase1  ase2  ase3  ase4  ase5  ase6  ase7  ase8
-##   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 Mujer  Solo    "Ciencia~    18     2     2     2     1     2     2     2     1
-## 2 Mujer  Solo    "Vocaci\~    20     3     4     3     3     3     3     3     4
-## 3 Mujer  Solo    "Vocaci\~    20     3     3     4     4     4     4     4     4
-## 4 Hombre Con fa~ "Ciencia~    18     3     3     3     4     4     4     3     3
-## # ... with 51 more variables: ase9 &lt;dbl&gt;, ase10 &lt;dbl&gt;, ase11 &lt;dbl&gt;,
-## #   ase12 &lt;dbl&gt;, ase13 &lt;dbl&gt;, ase14 &lt;dbl&gt;, ase15 &lt;dbl&gt;, ase16 &lt;dbl&gt;,
-## #   ase17 &lt;dbl&gt;, ase18 &lt;dbl&gt;, ase19 &lt;dbl&gt;, ase20 &lt;dbl&gt;, ase21 &lt;dbl&gt;,
-## #   ase22 &lt;dbl&gt;, ase23 &lt;dbl&gt;, ase24 &lt;dbl&gt;, ase25 &lt;dbl&gt;, ase26 &lt;dbl&gt;,
-## #   ase27 &lt;dbl&gt;, ase28 &lt;dbl&gt;, ase29 &lt;dbl&gt;, ase30 &lt;dbl&gt;, ase31 &lt;dbl&gt;,
-## #   ase_total &lt;dbl&gt;, ase_cat &lt;chr&gt;, bur1 &lt;dbl&gt;, bur2 &lt;dbl&gt;, bur3 &lt;dbl&gt;,
-## #   bur4 &lt;dbl&gt;, bur5 &lt;dbl&gt;, bur6 &lt;dbl&gt;, bur7 &lt;dbl&gt;, bur8 &lt;dbl&gt;, bur9 &lt;dbl&gt;,
-## #   bur10 &lt;dbl&gt;, bur11 &lt;dbl&gt;, bur12 &lt;dbl&gt;, bur13 &lt;dbl&gt;, bur14 &lt;dbl&gt;,
-## #   bur15 &lt;dbl&gt;, bur16 &lt;dbl&gt;, bur17 &lt;dbl&gt;, bur18 &lt;dbl&gt;, bur19 &lt;dbl&gt;,
-## #   bur20 &lt;dbl&gt;, bur21 &lt;dbl&gt;, bur22 &lt;dbl&gt;, bur23 &lt;dbl&gt;, bur24 &lt;dbl&gt;,
-## #   bur_total &lt;dbl&gt;, bur_cat &lt;chr&gt;
-```
 ]
 ]
-
 
 .panel[.panel-name[Paso 3]
 
 #### 3. Cargar datos en ggplot.
-
 
 .pull-left[
 
@@ -637,9 +1088,8 @@ ggplot(data)
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-34-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-63-1.png" width="70%" /&gt;
 ]
-
 ]
 
 .panel[.panel-name[Paso 4]
@@ -654,7 +1104,7 @@ ggplot(data, aes(x = ase_total))
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-36-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-65-1.png" width="70%" /&gt;
 ]
 ]
 
@@ -671,7 +1121,7 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-38-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-67-1.png" width="70%" /&gt;
 ]
 
 ]
@@ -705,7 +1155,7 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-41-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-70-1.png" width="70%" /&gt;
 ]
 ]
 
@@ -724,7 +1174,7 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-43-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-72-1.png" width="70%" /&gt;
 ]
 ]
 
@@ -746,7 +1196,7 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-45-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-74-1.png" width="70%" /&gt;
 ]
 ]
 
@@ -773,7 +1223,7 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-47-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-76-1.png" width="70%" /&gt;
 ]
 
 ]
@@ -801,7 +1251,7 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-49-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-78-1.png" width="70%" /&gt;
 ]
 ]
 ]
@@ -815,13 +1265,65 @@ ggplot(data, aes(x = ase_total)) +
 countdown(minutes = 10, seconds = 10, play_sound = TRUE)
 ```
 
-<div class="countdown" id="timer_61b6eccc" style="right:0;bottom:0;" data-audio="true" data-warnwhen="0">
+<div class="countdown" id="timer_61b99a13" style="right:0;bottom:0;" data-audio="true" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">10</span></code>
 </div>
 
 ---
 class: inverse, center, middle
 # .font100[Diagrama de cajas y bigotes]
+
+---
+
+class: inverse, center, middle
+# .font100[PRÁCTICA]
+
+---
+
+## Instrucciones
+
+.panelset[
+.panel[.panel-name[Barras]
+
+.pull-left[
+1. Realice un gráfico de barras teniendo en cuenta las variables **bur_total** y **sexo**. 
+
+2. Realice un gráfico con las variables **convive** y **bur_total**. 
+]
+.pull-right[
+&lt;img src="imagenes/perrito.jpg" width="100%" /&gt;
+]
+]
+
+
+.panelset[
+.panel[.panel-name[Histograma]
+
+
+1. Construya un histograma con las puntuaciones totales de burnout **(bur_total)** y segmente a la población según el tipo de convivencia **(convive)**.
+
+Además, considere las siguientes indicaciones:
+
+- Utilizar la regla de sturges para hallar la amplitud del intervalo de clase.
+- El color y el relleno deberán ser distintos a la presentación inicial.
+- Titule el eje x con el nombre "Burnout" y el eje Y con el nombre "Frecuencia".
+- En los comentarios coloque sus nombres y apellidos.
+
+]
+]
+
+.panelset[
+.panel[.panel-name[Cajas y bigotes]
+
+]
+]
+]
+
+
+
+
+
+
 
 ---
 
