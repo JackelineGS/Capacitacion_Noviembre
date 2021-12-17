@@ -70,24 +70,33 @@ xaringanExtra::use_extra_styles(
 
 ---
 
-# Temario
+## ¿Qué veremos hoy?
 
-1. VISUALIZACIÓN DE DATOS 
+.pull-left[
+1. **VISUALIZACIÓN DE DATOS** 
  * Definición
  * Importancia
  * Visualización de datos con R
  
-2. GRAMÁTICA DE GRÁFICOS
+2. **GRAMÁTICA DE GRÁFICOS**
  * Capas básicas
  * Capas de personalización
  
-3. ILUSTRACIÓN
+3. **ILUSTRACIÓN**
  * Base de datos
  * Gráfico de barras
  * Histograma
  * Diagrama de cajas y bigotes
  
-4. PRÁCTICA
+4. **PRÁCTICA**
+]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/ampi.png", dpi = 600)
+```
+]
+
 
 ---
 
@@ -325,12 +334,15 @@ Las principales ventajas de usar R para la visualización de datos son:
 
 .panel[.panel-name[Paquetes]
 
-Se utilizará el paquete `ggplot2` y una serie de extensiones como:
+Para crear visualizaciones se utiliza el paquete `ggplot2` y una serie de extensiones tales como:
 
+- patchwork
 - gganimate
 - ggplotly
 - ggridges
-- patwchork
+- ggtext
+- ggrepel
+- ggstatsplot
 
 ]
 ]
@@ -570,7 +582,7 @@ La base de datos (data) fue extraida de una investigación que tenía por objeti
 
 ```{r, out.width = "100%", echo = FALSE, message=FALSE}
 
-data <- read_csv(file = "data3_clean.csv")
+data <- readxl::read_excel("data3_clean.xlsx")
 variables <- readxl::read_excel("variables.xlsx")
 
 DT::datatable(variables, options = list(pageLength = 5))
@@ -1125,6 +1137,20 @@ data %>%
 ]
 ]
 
+---
+
+## ¡Nos vemos en 10 minutos!
+
+```{r, out.width = "100%", echo = FALSE}
+library(countdown)
+countdown(minutes = 10,
+          left = 0, right = 0,
+          top = 5,
+          padding = "50px",
+          margin = "5%",
+          font_size = "6em",
+          play_sound = TRUE)
+```
 
 ---
 
@@ -1226,8 +1252,8 @@ library(patchwork)
 #### 2. Importar datos.
 
 .font105[
-```{r warning=FALSE, message=FALSE}
-data <- read_csv(file = "data3_clean.csv")
+```{r warning=FALSE, message=FALSE, eval=FALSE}
+data <- readxl::read_xlsx("data3_clean.xlsx")
 ```
 ]
 ]
@@ -1451,16 +1477,6 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 ---
-
-```{r echo = FALSE}
-library(countdown)
-```
-
-```{r}
-countdown(minutes = 10, seconds = 10, play_sound = TRUE)
-```
-
----
 class: inverse, center, middle
 # .font100[Diagrama de cajas y bigotes]
 
@@ -1548,7 +1564,7 @@ ggplot(data,
 
 .panel[.panel-name[Paso 4A]
 
-### Paso 4A. Color (Parte de Estéticas)
+### Paso 4A. Color (variable)
 .font105[.line-space1-3[
 Con `aes`, además de las coordenadas, se puede colorear el gráfico. En este caso, coloreamos según la variable **convive**
 ]]
@@ -1572,7 +1588,7 @@ ggplot(data,
 ]
 
 .panel[.panel-name[Paso 4B]
-### Paso 4B. Color 
+### Paso 4B. Color (constante)
 .font105[.line-space1-3[
 Aparte de `aes`, puedes colorear el gráfico con los colores que desees
 
@@ -1679,7 +1695,7 @@ ggplot(data,
        theme_minimal() +
        labs(                                            
        title = "Puntajes de burnout según convivencia", 
-       caption  = "Avances en Medición Psicólogica"     
+       caption  = "Avances en Medición Psicólogica",     
        x = "¿Con quién convive?",                       
        y = ""                       
        ) +
@@ -1759,11 +1775,6 @@ knitr::include_graphics("imagenes/perrito.jpg", dpi = 500)
 ]
 ]
 ]
-
-
-
-
-
 
 
 ---
