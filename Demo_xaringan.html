@@ -10,7 +10,7 @@
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xc0ad8923e6a4ba3b12e4dc1ecbf7e42","expires":14}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"dde473368cbd4806ab19c07348083f4d","expires":14}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -46,7 +46,7 @@ class: center, middle, inverse, title-slide
 # Visualización de datos con R
 ### Jorge Huanca, Jackeline García y Elías Aburto
 ### Avances en Medición Psicológica
-### 13/12/2021
+### 17/12/2021
 
 ---
 
@@ -543,8 +543,8 @@ class: inverse, center, middle
 .font105[.line-space1-5[
 La base de datos (data) fue extraida de una investigación que tenía por objetivo correlacionar las variables `Autoeficacia Académica (AA)` y el `Burnout (B)` en estudiantes de enfermería ]]
 
-<div id="htmlwidget-2afcd36209e52cdcc371" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2afcd36209e52cdcc371">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],["Muestra","Sexo","Edad","Convivencia","Escuela","Escala de Autoeficacia Academica","Escala de Burnout","Puntaje total de Autoeficacia Academica","Puntaje total de Burnout","Puntaje categorizado de Autoeficacia Academica","Puntaje categorizado de Burnout"],["69","Hombre; Mujer","17; 23","Solo; Con familia","Ciencias; Ciencias sociales; Vocación salud","ase1; ase31","bur1; bur24","44; 144","10; 125","bajo; moderado; alto","leve; moderado; severo"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Variable<\/th>\n      <th>Descripcion<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8bcc07187d10ee2f0946" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8bcc07187d10ee2f0946">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],["Muestra","Sexo","Edad","Convivencia","Escuela","Escala de Autoeficacia Academica","Escala de Burnout","Puntaje total de Autoeficacia Academica","Puntaje total de Burnout","Puntaje categorizado de Autoeficacia Academica","Puntaje categorizado de Burnout"],["69","Hombre; Mujer","17; 23","Solo; Con familia","Ciencias; Ciencias sociales; Vocación salud","ase1; ase31","bur1; bur24","44; 144","10; 125","bajo; moderado; alto","leve; moderado; severo"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Variable<\/th>\n      <th>Descripcion<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -1265,13 +1265,209 @@ ggplot(data, aes(x = ase_total)) +
 countdown(minutes = 10, seconds = 10, play_sound = TRUE)
 ```
 
-<div class="countdown" id="timer_61b99a13" style="right:0;bottom:0;" data-audio="true" data-warnwhen="0">
+<div class="countdown" id="timer_61bc4407" style="right:0;bottom:0;" data-audio="true" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">10</span></code>
 </div>
 
 ---
 class: inverse, center, middle
 # .font100[Diagrama de cajas y bigotes]
+
+---
+
+### BOXPLOT ¿Cómo interpretarlo?
+.font105[.line-space1-3[
+La caja de un boxplot comienza en el primer cuartil (Q1) y termina en el tercero (Q3). Por lo tanto, **la caja representa el 50% de los datos centrales**, con una línea dentro que representa la mediana. A cada lado de la caja se dibuja un segmento con los datos más lejanos sin contar los valores atípicos (outliers) del box plot, que en caso de existir, se representarán con círculos.
+]]
+
+&lt;img src="imagenes/boxplot.png" width="100%" /&gt;
+
+
+---
+
+.panelset[
+.panel[.panel-name[Paso 1]
+
+### Paso 1. Base de datos
+.font105[.line-space1-3[
+El primer argumento refiere a la data, en este caso trabajaremos con `data` que previamente fue importada]]
+
+.pull-left[
+
+```r
+ggplot(data) 
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-83-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 2]
+
+### Paso 2. Coordenadas 
+.font105[.line-space1-3[
+El segundo argumento son las coordenadas, para ello colocamos `aes`]]
+
+.pull-left[
+
+```r
+ggplot(data,
+*      aes(x = convive,
+*          y = bur_total))
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-85-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 3]
+
+### Paso 3. Geometrías
+.font105[.line-space1-3[
+El tercer argumento refiere a las geometrías, para ello agregamos una capa y colocamos `geom`]]
+
+.pull-left[
+
+```r
+ggplot(data,
+       aes(x = convive,     
+           y = bur_total)) +
+*      geom_boxplot()
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-87-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 4A]
+
+### Paso 4A. Color (Parte de Estéticas)
+.font105[.line-space1-3[
+Con `aes`, además de las coordenadas, se puede colorear el gráfico. En este caso, coloreamos según la variable **convive**
+]]
+.pull-left[
+
+```r
+ggplot(data,
+       aes(x = convive,     
+           y = bur_total)) +
+*      geom_boxplot(aes(fill = convive))
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-89-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 4B]
+### Paso 4B. Color 
+.font105[.line-space1-3[
+Aparte de `aes`, puedes colorear el gráfico con los colores que desees
+
+]]
+.pull-left[
+
+```r
+ggplot(data,
+       aes(x = convive,     
+           y = bur_total)) +
+*      geom_boxplot(fill = c("#3EB595", "#FFF447"))
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-91-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 5]
+
+### Paso 5. Temas
+.font105[.line-space1-3[
+El cuarto argumento refiere a los temas o formatos de la gráfica, para ello agregamos una capa  y colocamos `theme`
+]]
+.pull-left[
+
+```r
+ggplot(data,
+       aes(x = convive,     
+           y = bur_total)) +
+       geom_boxplot(fill = c("#3EB595", "#FFF447")) +
+*      theme_minimal()
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-93-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 6]
+
+### Paso 6. Etiquetas
+.font105[.line-space1-3[
+El quinto argumento refiere a las etiquetas, para ello agregamos una capa y colocamos `labs`. En ella podemos específicar el título, subtítulo, leyenda, y otros.
+]]
+
+.pull-left[
+
+```r
+ggplot(data,
+       aes(x = convive,     
+           y = bur_total)) +
+       geom_boxplot(fill = c("#3EB595", "#FFF447")) +
+       theme_minimal() +
+*      labs(
+*      title = "Puntajes de burnout según convivencia",
+*      caption  = "Avances en Medición Psicólogica"
+*      x = "¿Con quién convive?",
+*      y = ""
+*      )
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-95-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 7]
+
+### Paso 7. Geom-jitter
+.font105[.line-space1-3[
+Se puede añadir una visualización de los datos mediante `geom_jitter`
+]]
+
+.pull-left[
+
+```r
+ggplot(data,
+       aes(x = convive,     
+           y = bur_total)) +
+       geom_boxplot(fill = c("#3EB595", "#FFF447")) +
+       theme_minimal() +
+       labs(                                            
+       title = "Puntajes de burnout según convivencia", 
+       caption  = "Avances en Medición Psicólogica"     
+       x = "¿Con quién convive?",                       
+       y = ""                       
+       ) +
+*     geom_jitter(color="black", size=0.5, alpha=0.5)
+```
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-97-1.png" style="display: block; margin: auto;" /&gt;
+]
+]
+]
 
 ---
 
@@ -1300,9 +1496,7 @@ class: inverse, center, middle
 .panel[.panel-name[Histograma]
 
 
-1. Construya un histograma con las puntuaciones totales de burnout **(bur_total)** y segmente a la población según el tipo de convivencia **(convive)**.
-
-Además, considere las siguientes indicaciones:
+1. Construya un histograma con las puntuaciones totales de burnout **(bur_total)** y segmente a la población según el tipo de convivencia **(convive)**. Además, considere las siguientes indicaciones:
 
 - Utilizar la regla de sturges para hallar la amplitud del intervalo de clase.
 - El color y el relleno deberán ser distintos a la presentación inicial.
@@ -1314,6 +1508,14 @@ Además, considere las siguientes indicaciones:
 
 .panelset[
 .panel[.panel-name[Cajas y bigotes]
+
+1. Construya un diagrama de cajas y bigotes con las puntuaciones totales de autoeficacia académica, considerando como variable categórica a la escuela de pertenencia.
+
+- Agregue una visualización de los datos con geom_jitter
+- El color y el relleno deberán ser distintos a la presentación inicial.
+- Titule el eje x con el nombre "Autoeficacia académica" y el eje Y sin nombre.
+- En el subtítulo coloque el grupo de estudios al que pertenece.
+- En la leyenda coloque sus nombres y apellidos.
 
 ]
 ]
